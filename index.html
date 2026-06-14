@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#006664">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>คู่มือพี่เลี้ยง · Proud to be KU 86 · 15 มิ.ย.</title>
+<style>
+  :root{
+    --green:#006664; --green-d:#004d4b; --green-l:#e1efed; --green-l2:#f1f8f7;
+    --gold:#d99100; --gold-d:#b87900; --gold-l:#fdf2d9;
+    --ink:#13302d; --muted:#5d716e; --card:#ffffff; --bg:#eaf3f1;
+    --line:#d6e5e2; --shadow:0 2px 10px rgba(0,60,58,.08);
+    --stick:104px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(0,102,100,.12)}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Sarabun","Noto Sans Thai","Leelawadee UI","Tahoma",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px; line-height:1.65; -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:560px;margin:0 auto}
+
+  /* ===== Sticky top ===== */
+  .topwrap{position:sticky;top:0;z-index:50;background:var(--green);box-shadow:0 2px 8px rgba(0,40,38,.18)}
+  .topbar{display:flex;align-items:center;gap:8px;padding:9px 14px;color:#fff}
+  .topbar .badge{background:var(--gold);color:#3a2700;font-weight:800;font-size:12px;padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .topbar .ttl{font-weight:800;font-size:15px;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  nav.nav{display:flex;gap:8px;overflow-x:auto;padding:8px 12px;background:var(--green-d);scrollbar-width:none}
+  nav.nav::-webkit-scrollbar{display:none}
+  nav.nav a{
+    flex:0 0 auto;color:#d7ece9;text-decoration:none;font-weight:700;font-size:14px;
+    padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);white-space:nowrap;min-height:38px;display:flex;align-items:center
+  }
+  nav.nav a.active{background:#fff;color:var(--green-d)}
+
+  /* ===== Hero ===== */
+  .hero{background:linear-gradient(160deg,var(--green) 0%,#00514f 100%);color:#fff;padding:26px 20px 30px;text-align:center}
+  .hero .kicker{font-size:13px;letter-spacing:3px;font-weight:700;color:var(--gold-l);opacity:.95;margin:0 0 6px}
+  .hero h1{margin:0;font-size:30px;line-height:1.15;font-weight:800}
+  .hero h1 small{display:block;font-size:15px;font-weight:600;opacity:.9;letter-spacing:2px;margin-top:4px}
+  .hero .meta{margin-top:16px;display:flex;flex-direction:column;gap:8px;align-items:center}
+  .hero .chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:9px 16px;font-weight:700;font-size:15px}
+  .hero .chip b{color:#fff}
+  .hero .date{font-size:20px;font-weight:800}
+  .hero .date .d{color:var(--gold-l)}
+
+  /* ===== Sections / cards ===== */
+  section{scroll-margin-top:var(--stick);padding:22px 14px 4px}
+  .sec-head{display:flex;align-items:center;gap:10px;margin:0 2px 14px}
+  .sec-head .n{flex:0 0 auto;width:30px;height:30px;border-radius:9px;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .sec-head h2{margin:0;font-size:20px;font-weight:800;color:var(--green-d)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:16px 16px;margin-bottom:14px}
+  .card h3{margin:0 0 8px;font-size:17px;color:var(--green-d);font-weight:800}
+  .card p{margin:0 0 8px}
+  .card p:last-child{margin-bottom:0}
+  .lead{color:var(--muted);font-size:15px}
+
+  .row{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .row .ic{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--green-l);color:var(--green-d);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:1px}
+  .row .tx{flex:1}
+  .row .tx b{color:var(--green-d)}
+  .pill{display:inline-block;background:var(--green-l);color:var(--green-d);font-weight:800;font-size:14px;padding:3px 10px;border-radius:8px;margin-right:6px}
+
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .tag{background:var(--green-l);color:var(--green-d);font-weight:700;font-size:15px;padding:8px 12px;border-radius:10px;border:1px solid #cfe5e1}
+
+  /* ===== Checklist ===== */
+  .chk-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .chk-head .prog{font-weight:800;color:var(--green);font-size:15px}
+  .chk{list-style:none;margin:0;padding:0}
+  .chk li{margin:0 0 8px}
+  .chk label{display:flex;align-items:center;gap:13px;background:var(--green-l2);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px;min-height:54px;cursor:pointer;transition:background .15s,border-color .15s}
+  .chk input{width:26px;height:26px;flex:0 0 auto;accent-color:var(--green);margin:0}
+  .chk label span{font-weight:700;font-size:16px}
+  .chk input:checked + span{color:var(--muted);text-decoration:line-through}
+  .chk label:has(input:checked){background:#eef7f0;border-color:#bfe0cf}
+  .btn-reset{margin-top:4px;background:#fff;border:1.5px solid var(--line);color:var(--muted);font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px;cursor:pointer}
+  .btn-reset:active{background:var(--green-l)}
+
+  /* ===== Timeline ===== */
+  .legend{display:flex;gap:14px;align-items:center;margin:0 2px 12px;font-size:14px;color:var(--muted);font-weight:700;flex-wrap:wrap}
+  .legend .dot{display:inline-block;width:13px;height:13px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .dot.m{background:var(--green)} .dot.a{background:var(--gold)}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:14px;width:3px;background:linear-gradient(var(--green),#bcdcd7);border-radius:3px}
+  .tl{position:relative;margin-bottom:14px}
+  .tl::before{content:"";position:absolute;left:-26px;top:18px;width:15px;height:15px;border-radius:50%;background:#fff;border:4px solid var(--green);box-shadow:0 0 0 3px var(--bg)}
+  .tl.end::before{border-color:var(--gold)}
+  .tl-card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:13px 14px}
+  .times{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+  .tb{font-weight:800;font-size:14px;padding:4px 10px;border-radius:8px;white-space:nowrap}
+  .tb.m{background:var(--green);color:#fff}
+  .tb.a{background:var(--gold-l);color:var(--gold-d);border:1px solid #eccf86}
+  .tb.solo{background:var(--green-l);color:var(--green-d)}
+  .tl-card h3{margin:0 0 5px;font-size:17px;color:var(--ink);font-weight:800}
+  .tl-card .sub{color:var(--muted);font-size:14.5px;margin:0 0 6px}
+  .clips{list-style:none;margin:6px 0 0;padding:0}
+  .clips li{position:relative;padding:3px 0 3px 18px;font-size:15px;color:var(--ink)}
+  .clips li::before{content:"▸";position:absolute;left:0;color:var(--green);font-weight:800}
+  .clips li .t{color:var(--muted);font-weight:700;font-size:13.5px}
+  .do{margin-top:10px;background:var(--gold-l);border-left:5px solid var(--gold);border-radius:0 10px 10px 0;padding:10px 12px}
+  .do .lab{display:inline-block;background:var(--gold);color:#3a2700;font-weight:800;font-size:12px;padding:2px 9px;border-radius:6px;margin-bottom:5px;letter-spacing:.3px}
+  .do p{margin:0;font-size:15.5px;font-weight:600}
+  .do ul{margin:4px 0 0;padding-left:20px}
+  .do li{font-size:15.5px;font-weight:600;margin-bottom:2px}
+
+  /* ===== Numbered steps (trash) ===== */
+  .steps{list-style:none;counter-reset:s;margin:0;padding:0}
+  .steps li{position:relative;counter-increment:s;padding:11px 0 11px 44px;border-bottom:1px dashed var(--line);font-size:16px}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .note{margin-top:8px;background:var(--green-l2);border:1px dashed #bcd9d4;border-radius:10px;padding:9px 12px;font-size:14.5px;color:var(--green-d);font-weight:600}
+
+  /* ===== Remember ===== */
+  .warn{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px dashed var(--line)}
+  .warn:last-child{border-bottom:0}
+  .warn .m{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--gold-l);color:var(--gold-d);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:1px}
+  .warn p{margin:0;font-size:15.5px}
+  .warn b{color:var(--green-d)}
+
+  /* ===== Faculty ===== */
+  .fac{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);background:#fff}
+  .fac .fhd{padding:12px 14px;color:#fff;font-weight:800;font-size:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .fac.am .fhd{background:var(--green)} .fac.pm .fhd{background:var(--gold-d)}
+  .fac .fhd .tm{font-size:13.5px;font-weight:700;opacity:.95}
+  .fac table{width:100%;border-collapse:collapse;font-size:15px}
+  .fac td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .fac tr:last-child td{border-bottom:0}
+  .fac td.fn{font-weight:700;color:var(--ink)}
+  .fac td.fc{text-align:right;color:var(--muted);white-space:nowrap;font-weight:700;font-size:14px}
+  .fac td.fa{white-space:nowrap;font-weight:800;color:var(--green-d);font-size:13.5px}
+  .fcap{font-size:13px;color:var(--muted);padding:9px 14px;background:var(--green-l2)}
+
+  /* ===== Footer / to-top ===== */
+  footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
+  footer .ku{color:var(--green-d);font-weight:800}
+  #toTop{position:fixed;right:16px;bottom:18px;z-index:60;width:50px;height:50px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:22px;font-weight:800;box-shadow:0 4px 14px rgba(0,60,58,.32);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;cursor:pointer}
+  #toTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+
+  @media(min-width:600px){ .hero h1{font-size:34px} body{font-size:18px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== STICKY TOP ===== -->
+  <div class="topwrap">
+    <div class="topbar">
+      <span class="badge">15 มิ.ย.</span>
+      <span class="ttl">คู่มือพี่เลี้ยง · Proud to be KU 86</span>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#before">ก่อนงาน</a>
+      <a href="#checkin">เช็คอิน</a>
+      <a href="#timeline">กำหนดการ</a>
+      <a href="#trash">แยกขยะ</a>
+      <a href="#remember">ข้อควรจำ</a>
+      <a href="#faculty">คณะวันนี้</a>
+    </nav>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <p class="kicker">PROUD TO BE KU 86</p>
+    <h1>คู่มือพี่เลี้ยง<small>STAFF GUIDE</small></h1>
+    <div class="meta">
+      <div class="date">วันจันทร์ที่ <span class="d">15 มิถุนายน 2569</span></div>
+      <div class="chip">อาคารจักรพันธ์เพ็ญศิริ</div>
+    </div>
+  </header>
+
+  <!-- ===== 1. ก่อนเริ่มงาน ===== -->
+  <section id="before">
+    <div class="sec-head"><span class="n">1</span><h2>ก่อนเริ่มงาน</h2></div>
+
+    <div class="card">
+      <h3>เวลานัดหมาย</h3>
+      <div class="row"><span class="ic">06:30</span><div class="tx"><b>นัดพบ 06.30 น.</b> ที่ระเบียงอาคารฝั่งประตูทางเข้า ด้าน COVER WAY (แนวต้นสน)</div></div>
+      <div class="row"><span class="ic">07:00</span><div class="tx"><b>ลงชื่อทำงานไม่เกิน 07.00 น.</b></div></div>
+      <div class="row"><span class="ic">07:30</span><div class="tx"><b>07.30 น. เข้าประจำกลุ่ม</b> พร้อมทำงาน (ทานข้าวเช้าให้เสร็จก่อน)</div></div>
+    </div>
+
+    <div class="card">
+      <h3>การแต่งกาย Staff</h3>
+      <div class="tag-list">
+        <span class="tag">เสื้อ STAFF</span>
+        <span class="tag">กางเกงขายาวสีเข้ม</span>
+        <span class="tag">รองเท้าหุ้มส้น</span>
+      </div>
+      <p class="lead" style="margin-top:10px">กางเกงไม่แฟชั่นขาดรุ่ย · ไม่สวมรองเท้าแตะ · อาคารค่อนข้างหนาว เตรียมเสื้อกันหนาวมาใส่ได้</p>
+    </div>
+
+    <div class="card">
+      <h3>ของที่ต้องพกมาเอง</h3>
+      <div class="tag-list">
+        <span class="tag">ปากกา 1 แท่ง</span>
+        <span class="tag">ขวดน้ำ (ไว้กรอกน้ำ)</span>
+        <span class="tag">เสื้อกันหนาว</span>
+      </div>
+      <div class="note" style="margin-top:12px">อย่าลืม! รับ <b>เทียน + ถุงผ้า</b> ไปวางไว้ใต้เก้าอี้พี่เลี้ยงก่อนเริ่มงาน</div>
+    </div>
+  </section>
+
+  <!-- ===== 2. เช็คอิน checklist ===== -->
+  <section id="checkin">
+    <div class="sec-head"><span class="n">2</span><h2>ของที่ต้องรับตอนเช็คอิน</h2></div>
+    <div class="card">
+      <div class="chk-head">
+        <p class="lead" style="margin:0">ติ๊กเมื่อรับครบ — สถานะจะถูกบันทึกไว้</p>
+        <span class="prog" id="chk-progress">0/6</span>
+      </div>
+      <ul class="chk">
+        <li><label><input type="checkbox" data-key="nametag"><span>ป้ายชื่อพี่เลี้ยง</span></label></li>
+        <li><label><input type="checkbox" data-key="breakfast"><span>ข้าวเช้า</span></label></li>
+        <li><label><input type="checkbox" data-key="sticker"><span>สติกเกอร์ชื่อน้อง</span></label></li>
+        <li><label><input type="checkbox" data-key="pen"><span>ปากกา</span></label></li>
+        <li><label><input type="checkbox" data-key="candle"><span>ถุงเทียน 15 แท่ง</span></label></li>
+        <li><label><input type="checkbox" data-key="bag"><span>กระเป๋า 14 ใบ</span></label></li>
+      </ul>
+      <button class="btn-reset" id="chk-reset" type="button">ล้างเครื่องหมายทั้งหมด</button>
+    </div>
+  </section>
+
+  <!-- ===== 3. กำหนดการ / Timeline ===== -->
+  <section id="timeline">
+    <div class="sec-head"><span class="n">3</span><h2>กำหนดการวันที่ 15</h2></div>
+    <p class="legend"><span><span class="dot m"></span>รอบเช้า 08.00–12.00</span><span><span class="dot a"></span>รอบบ่าย 13.00–17.00</span></p>
+    <p class="lead" style="margin:-4px 2px 14px">รอบเช้าและบ่ายเป็นกิจกรรมเดียวกัน คนละคณะ ดูเวลาของรอบที่ตัวเองดูแลได้เลย</p>
+
+    <div class="timeline">
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 08.00–08.30</span><span class="tb a">บ่าย 13.00–13.30</span></div>
+          <h3>เปิดให้เข้าอาคาร / ลงทะเบียนนิสิตใหม่</h3>
+          <p class="sub">ระบบ face detection โดยสำนักบริหารการศึกษา — นิสิตลงทะเบียนใต้อาคารแล้วขึ้นมานั่งประจำคณะ ถ้าที่กันไว้เต็มให้ไปนั่งโซนรวมคละคณะ</p>
+          <div class="do">
+            <span class="lab">พี่เลี้ยงต้องทำ</span>
+            <ul>
+              <li>ทักทายน้อง ให้น้องเขียนชื่อบนสติกเกอร์ ติดที่หน้าอกด้านซ้าย</li>
+              <li>ให้น้องเซลฟี่รูปตัวเองให้เห็นป้ายงานหน้าเวที เผื่อใช้เป็นหลักฐานการเข้าร่วม</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 08.30–09.00</span><span class="tb a">บ่าย 13.30–14.00</span></div>
+          <h3>การแสดงต้อนรับนิสิตใหม่</h3>
+          <p class="sub">ชมรม KU Band (20 นาที) + ชมรม KU Dance (10 นาที)</p>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>ชวนน้องมีส่วนร่วม ปรบมือ เอนเตอร์เทนน้องไปด้วยกัน</p></div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 09.00–09.10</span><span class="tb a">บ่าย 14.00–14.10</span></div>
+          <h3>พิธีกรนำเข้าสู่โครงการ</h3>
+          <p class="sub">พิธีกรจากชมรมส่งเสริมศิลปะการพูด (PSC)</p>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 09.10–09.57</span><span class="tb a">บ่าย 14.10–14.57</span></div>
+          <h3>แนะนำมหาวิทยาลัย + Clip VDO</h3>
+          <ul class="clips">
+            <li>Clip "5 เรื่องต้องรู้ KU FRESHY" <span class="t">(12 นาที)</span></li>
+            <li>Clip แนะนำองค์กร/ชมรม/สโมสรนิสิต + เปิดตัวผู้นำนิสิต <span class="t">(15 นาที)</span></li>
+            <li>Clip ความภาคภูมิใจ <span class="t">(20 นาที)</span></li>
+          </ul>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>ทยอยออกไปรับของว่างมาเตรียมแจกตอนพักเบรก ลุกไปทีละโซนตามลำดับ <b>D → C → B → A</b></p></div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 09.57–10.10</span><span class="tb a">บ่าย 14.57–15.10</span></div>
+          <h3>พักเบรก + อาหารว่าง</h3>
+          <p class="sub">พักรับประทานอาหารว่าง / ช่วงนี้มีสัมภาษณ์นิสิตใหม่</p>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>แจกของว่างให้น้อง แล้วเก็บขยะแยกประเภท (ดูวิธีแยกขยะหัวข้อถัดไป)</p></div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 10.10–10.35</span><span class="tb a">บ่าย 15.10–15.35</span></div>
+          <h3>สอนร้องเพลงพระราชนิพนธ์เกษตรศาสตร์</h3>
+          <p class="sub">โดย คุณจตุพร สุวรรณสุขุม (ร่วมกับ KU Band + ชมรมเชียร์และแปรอักษร)</p>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>ยืนฝึกร้องเพลงไปพร้อมกับน้อง อย่าปล่อยให้น้องยืนคนเดียว</p></div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 10.35–11.20</span><span class="tb a">บ่าย 15.35–16.20</span></div>
+          <h3>เปิดตัวผู้บริหาร + พิธีเทียนชัยอุดมการณ์</h3>
+          <p class="sub">เปิดตัวผู้บริหาร · กล่าวต้อนรับ KU86 · มอบต้นนนทรี · จุดเทียนชัยอุดมการณ์ · ร้องเพลงพระราชนิพนธ์ · ผู้บริหารทักทายนิสิตหน้าเวที</p>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>แจกเทียนให้น้องได้เลย แต่ <b>รอจนบนเวทีเริ่มจุดเทียนก่อน</b> ค่อยให้น้อง ๆ จุดเทียนต่อกัน</p></div>
+        </div>
+      </div>
+
+      <div class="tl">
+        <div class="tl-card">
+          <div class="times"><span class="tb m">เช้า 11.20–11.45</span><span class="tb a">บ่าย 16.20–16.45</span></div>
+          <h3>ทำแบบประเมิน + แจกของที่ระลึก</h3>
+          <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>QR Code ขึ้นจอโปรเจคเตอร์ / ส่งให้ในไลน์กลุ่มพี่เลี้ยง ให้น้องสแกนทำแบบประเมิน แล้วจึง <b>แจกของที่ระลึก (กระเป๋า)</b> ให้น้อง</p></div>
+        </div>
+      </div>
+
+      <div class="tl end">
+        <div class="tl-card">
+          <div class="times"><span class="tb solo">ปิดท้าย (20 นาที)</span></div>
+          <h3>การแสดงปิดท้าย — ชมรมรวมดาวกระจุย</h3>
+          <p class="sub">หลังเสร็จสิ้นกิจกรรม นิสิตสามารถออกได้ทุกประตูของอาคาร</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== 4. แยกขยะ ===== -->
+  <section id="trash">
+    <div class="sec-head"><span class="n">4</span><h2>วิธีแยกขยะ</h2></div>
+    <div class="card">
+      <ol class="steps">
+        <li><b>ขวดนม</b> — ทิ้งในถุงหิ้วที่ใส่นมมา</li>
+        <li><b>ถุง/ซองห่อขนม</b> — ทิ้งลงกล่องขนมใบใหญ่ที่ใส่มา</li>
+        <li><b>หลอด</b> — แยกออกจากขวดนม ทิ้งหลอดรวมในถุงกระดาษขนม (เลือกไว้ 1 ใบสำหรับใส่หลอด)</li>
+        <li>พี่เลี้ยงนำขยะที่แยกแล้วทั้งหมดไปทิ้งที่จุดทิ้งขยะ</li>
+      </ol>
+      <div class="note">จุดทิ้งขยะอยู่ใต้อาคาร — ลงจากอาคารด้านสวัสดิการ แล้วเดินไปทางซ้ายมือ</div>
+    </div>
+  </section>
+
+  <!-- ===== 5. ข้อควรจำ ===== -->
+  <section id="remember">
+    <div class="sec-head"><span class="n">5</span><h2>ข้อควรจำ</h2></div>
+    <div class="card">
+      <div class="warn"><span class="m">!</span><p><b>ห้ามปล่อยน้องอยู่ลำพัง</b> โดยไม่มีพี่ — ถ้าต้องลุก (เช่น เข้าห้องน้ำ) ให้ฝากพี่เลี้ยงกลุ่มด้านหลังช่วยดูแลแทน</p></div>
+      <div class="warn"><span class="m">!</span><p><b>น้องต้องรู้พิกัดที่นั่งตัวเอง</b> เผื่อไปเข้าห้องน้ำแล้วกลับมาให้ถูกกลุ่ม</p></div>
+      <div class="warn"><span class="m">!</span><p><b>มีส่วนร่วมทุกกิจกรรม</b> รู้ลำดับคิวบนเวทีว่าถึงช่วงไหน จะได้ไม่ผิดคิวแจกของ</p></div>
+      <div class="warn"><span class="m">!</span><p><b>ไม่อนุญาตให้น้องออกก่อนเวลา</b> พูดโน้มน้าวให้อยู่จนครบ — ถ้าจำเป็นจริง ๆ พาน้องไปแจ้งที่โต๊ะลงทะเบียนขวามือของเวที</p></div>
+      <div class="warn"><span class="m">?</span><p>มีปัญหาหรือข้อสงสัย <b>ถามในกลุ่มไลน์</b> ได้เลย พี่ ๆ ยินดีช่วยเหลือ</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 6. คณะวันนี้ ===== -->
+  <section id="faculty">
+    <div class="sec-head"><span class="n">6</span><h2>คณะที่ดูแลวันที่ 15</h2></div>
+
+    <div class="fac am">
+      <div class="fhd"><span>รอบเช้า</span><span class="tm">08.00–12.00 น.</span></div>
+      <table>
+        <tr><td class="fn">วิทยาศาสตร์</td><td class="fa">A1–A8</td><td class="fc">112 คน</td></tr>
+        <tr><td class="fn">มนุษยศาสตร์</td><td class="fa">A9–A16</td><td class="fc">112 คน</td></tr>
+        <tr><td class="fn">ว.บูรณาการศาสตร์</td><td class="fa">A17–A20</td><td class="fc">60 คน</td></tr>
+        <tr><td class="fn">แพทยศาสตร์</td><td class="fa">A21–A24</td><td class="fc">48 คน</td></tr>
+        <tr><td class="fn">พยาบาลศาสตร์</td><td class="fa">A25–A32</td><td class="fc">70 คน</td></tr>
+        <tr><td class="fn">สถาปัตยกรรมศาสตร์</td><td class="fa">A33–A40</td><td class="fc">112 คน</td></tr>
+      </table>
+    </div>
+
+    <div class="fac pm">
+      <div class="fhd"><span>รอบบ่าย</span><span class="tm">13.00–17.00 น.</span></div>
+      <table>
+        <tr><td class="fn">สังคมศาสตร์</td><td class="fa">A1–A12</td><td class="fc">168 คน</td></tr>
+        <tr><td class="fn">ประมง</td><td class="fa">A13–A20</td><td class="fc">112 คน</td></tr>
+        <tr><td class="fn">เภสัชศาสตร์</td><td class="fa">A23–A24</td><td class="fc">24 คน</td></tr>
+        <tr><td class="fn">บริหารธุรกิจ</td><td class="fa">A21–22, A25–40</td><td class="fc">224 คน</td></tr>
+      </table>
+      <div class="fcap">ที่นั่งโซน A = ที่นั่งสำรองด้านหน้าของคณะ ส่วนที่ล้นไปนั่งโซนรวม B / C / D</div>
+    </div>
+  </section>
+
+  <footer>
+    <p><span class="ku">PROUD TO BE KU 86</span><br>คู่มือนิสิตพี่เลี้ยง · 15 มิถุนายน 2569 · อาคารจักรพันธ์เพ็ญศิริ</p>
+  </footer>
+
+</div>
+
+<button id="toTop" type="button" aria-label="กลับขึ้นบนสุด">↑</button>
+
+<script>
+(function(){
+  "use strict";
+  var STORAGE_KEY = "ptbku15:v1:checkin";
+  var boxes = [].slice.call(document.querySelectorAll(".chk input[type=checkbox]"));
+  var progressEl = document.getElementById("chk-progress");
+
+  function load(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }catch(e){ return {}; } }
+  function save(d){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }catch(e){} }
+  function updateProgress(){
+    var done = boxes.filter(function(b){ return b.checked; }).length;
+    if(progressEl) progressEl.textContent = done + "/" + boxes.length;
+  }
+
+  var data = load();
+  boxes.forEach(function(b){
+    var k = b.getAttribute("data-key");
+    if(data[k]) b.checked = true;
+    b.addEventListener("change", function(){
+      var d = load(); d[k] = b.checked; save(d); updateProgress();
+    });
+  });
+  updateProgress();
+
+  var resetBtn = document.getElementById("chk-reset");
+  if(resetBtn){
+    resetBtn.addEventListener("click", function(){
+      boxes.forEach(function(b){ b.checked = false; });
+      save({}); updateProgress();
+    });
+  }
+
+  // scroll-spy: highlight active nav chip
+  var links = [].slice.call(document.querySelectorAll(".nav a"));
+  var map = {};
+  links.forEach(function(a){ var s = document.querySelector(a.getAttribute("href")); if(s) map[s.id] = a; });
+  if("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(a){ a.classList.remove("active"); });
+          var a = map[en.target.id];
+          if(a){
+            a.classList.add("active");
+            try{ a.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"}); }catch(e){}
+          }
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    [].slice.call(document.querySelectorAll("section")).forEach(function(s){ obs.observe(s); });
+  }
+
+  // back to top
+  var toTop = document.getElementById("toTop");
+  if(toTop){
+    window.addEventListener("scroll", function(){
+      if(window.pageYOffset > 500) toTop.classList.add("show");
+      else toTop.classList.remove("show");
+    }, {passive:true});
+    toTop.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
+  }
+})();
+</script>
+</body>
+</html>
