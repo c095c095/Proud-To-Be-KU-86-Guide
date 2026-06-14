@@ -151,6 +151,14 @@
   .fcap{font-size:13px;color:var(--muted);padding:9px 14px;background:var(--green-l2)}
 
   /* ===== Footer / to-top ===== */
+  .drive-link{display:flex;align-items:center;gap:13px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink)}
+  .drive-link:active{background:var(--green-l2)}
+  .drive-ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--green-l);display:flex;align-items:center;justify-content:center}
+  .drive-ic svg{width:24px;height:24px}
+  .drive-tx{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35}
+  .drive-tx b{font-size:16.5px;color:var(--green-d);font-weight:800}
+  .drive-tx span{font-size:13.5px;color:var(--muted);font-weight:600}
+  .drive-arrow{flex:0 0 auto;color:var(--green);font-size:21px;font-weight:800}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer .ku{color:var(--green-d);font-weight:800}
   #toTop{position:fixed;right:16px;bottom:18px;z-index:60;width:50px;height:50px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:22px;font-weight:800;box-shadow:0 4px 14px rgba(0,60,58,.32);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;cursor:pointer}
@@ -226,6 +234,7 @@
       <a href="#trash">แยกขยะ</a>
       <a href="#remember">หน้าที่</a>
       <a href="#faculty">คณะวันนี้</a>
+      <a href="#more">ลิงก์</a>
     </nav>
   </div>
 
@@ -500,6 +509,21 @@
         <div class="fcap">ที่นั่งโซน A = ที่นั่งสำรองด้านหน้าของคณะ ส่วนที่ล้นไปนั่งโซนรวม B / C / D</div>
       </div>
     </div>
+  </section>
+
+  <!-- ===== ลิงก์เพิ่มเติม ===== -->
+  <section id="more">
+    <div class="sec-head"><span class="n">+</span><h2>ข้อมูลเพิ่มเติม</h2></div>
+    <a class="drive-link" href="https://drive.google.com/drive/folders/1bvVg_-XQ-LMdKJDlx6EaJOW1pIjGVZ5n" target="_blank" rel="noopener noreferrer">
+      <span class="drive-ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#006664" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </span>
+      <span class="drive-tx">
+        <b>รวมข้อมูลพี่เลี้ยง Proud to be KU</b>
+        <span>เปิดดูใน Google Drive</span>
+      </span>
+      <span class="drive-arrow">↗</span>
+    </a>
   </section>
 
   <footer>
