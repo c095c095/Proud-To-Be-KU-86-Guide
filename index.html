@@ -62,7 +62,7 @@
 
   .row{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--line)}
   .row:last-child{border-bottom:0}
-  .row .ic{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--green-l);color:var(--green-d);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;margin-top:1px}
+  .row .ic{flex:0 0 auto;min-width:62px;height:auto;padding:6px 10px;border-radius:9px;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;letter-spacing:.5px;margin-top:1px}
   .row .tx{flex:1}
   .row .tx b{color:var(--green-d)}
   .pill{display:inline-block;background:var(--green-l);color:var(--green-d);font-weight:800;font-size:14px;padding:3px 10px;border-radius:8px;margin-right:6px}
@@ -82,6 +82,10 @@
   .chk label:has(input:checked){background:#eef7f0;border-color:#bfe0cf}
   .btn-reset{margin-top:4px;background:#fff;border:1.5px solid var(--line);color:var(--muted);font-weight:700;font-size:14px;padding:9px 14px;border-radius:10px;cursor:pointer}
   .btn-reset:active{background:var(--green-l)}
+  .ptable{width:100%;border-collapse:collapse;font-size:14.5px;margin:8px 0 10px;border:1px solid var(--line)}
+  .ptable th{background:var(--green-l);color:var(--green-d);font-weight:800;padding:9px 10px;text-align:left;font-size:13.5px;border:1px solid var(--line)}
+  .ptable td{padding:10px;border:1px solid var(--line);font-weight:700}
+  .ex{display:inline-block;background:var(--gold-l);border:1.5px dashed var(--gold);color:var(--gold-d);font-weight:800;padding:4px 14px;border-radius:8px;letter-spacing:.5px}
 
   /* ===== Timeline ===== */
   .legend{display:flex;gap:14px;align-items:center;margin:0 2px 12px;font-size:14px;color:var(--muted);font-weight:700;flex-wrap:wrap}
@@ -98,6 +102,8 @@
   .tb.m{background:var(--green);color:#fff}
   .tb.a{background:var(--gold-l);color:var(--gold-d);border:1px solid #eccf86}
   .tb.solo{background:var(--green-l);color:var(--green-d)}
+  .dur{font-weight:700;font-size:13px;color:var(--muted);background:#eef3f2;border:1px solid var(--line);padding:4px 10px;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+  .dur::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block}
   .tl-card h3{margin:0 0 5px;font-size:17px;color:var(--ink);font-weight:800}
   .tl-card .sub{color:var(--muted);font-size:14.5px;margin:0 0 6px}
   .clips{list-style:none;margin:6px 0 0;padding:0}
@@ -207,14 +213,36 @@
     </div>
   </section>
 
-  <!-- ===== 2. เช็คอิน checklist ===== -->
+  <!-- ===== 2. ลงชื่อ & เช็คอิน ===== -->
   <section id="checkin">
-    <div class="sec-head"><span class="n">2</span><h2>ของที่ต้องรับตอนเช็คอิน</h2></div>
+    <div class="sec-head"><span class="n">2</span><h2>ลงชื่อ &amp; เช็คอิน</h2></div>
+
+    <div class="card">
+      <h3>ลำดับการเดิน (ฝั่งทางเดินต้นสน)</h3>
+      <ol class="steps">
+        <li><b>ชั้น 1 / บันไดขั้นพัก</b> — เซ็นชื่อ + ลงกลุ่ม, รับป้ายชื่อพี่เลี้ยง, รับข้าวเช้า (ทานให้เสร็จก่อน 07.30 น.)</li>
+        <li><b>ชั้น 2 หน้าทางเข้าห้อง</b> — รับสติกเกอร์ชื่อน้อง + ปากกา, ถุงเทียน 15 แท่ง, กระเป๋า 14 ใบ</li>
+        <li><b>ทางเข้าประตูอาคารจักรฯ</b> — นำของไปวางเตรียมไว้ใต้เก้าอี้พี่เลี้ยง</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h3>กระดาษเช็คลิสต์</h3>
+      <p class="lead">รับตอนเซ็นชื่อ กรอก <b>กลุ่ม / ชื่อพี่เลี้ยง / เบอร์โทร</b> ให้ครบ</p>
+      <table class="ptable">
+        <tr><th>กลุ่ม</th><th>ชื่อพี่เลี้ยง</th><th>เบอร์โทร</th></tr>
+        <tr><td>A1</td><td>น.ส.ใจดี มากมาย</td><td>080-0000000</td></tr>
+      </table>
+      <p style="margin:0 0 8px">เขียนป้ายชื่อห้อยคอ — ชื่อเล่น + กลุ่ม ตัวอย่าง: <span class="ex">A1 พี่เคยู</span></p>
+      <div class="note">ติ๊กรายการในกระดาษให้ครบ แล้วหย่อนลงกล่องด้านหน้า ก่อนเข้าห้องประชุม</div>
+    </div>
+
     <div class="card">
       <div class="chk-head">
-        <p class="lead" style="margin:0">ติ๊กเมื่อรับครบ — สถานะจะถูกบันทึกไว้</p>
+        <h3 style="margin:0">เช็กลิสต์ของที่ต้องรับ</h3>
         <span class="prog" id="chk-progress">0/6</span>
       </div>
+      <p class="lead" style="margin:2px 0 10px">ติ๊กเมื่อรับครบ — สถานะถูกบันทึกไว้ ติ๊กแล้วค้างตอนเปิดใหม่</p>
       <ul class="chk">
         <li><label><input type="checkbox" data-key="nametag"><span>ป้ายชื่อพี่เลี้ยง</span></label></li>
         <li><label><input type="checkbox" data-key="breakfast"><span>ข้าวเช้า</span></label></li>
@@ -237,7 +265,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 08.00–08.30</span><span class="tb a">บ่าย 13.00–13.30</span></div>
+          <div class="times"><span class="tb m">เช้า 08.00–08.30</span><span class="tb a">บ่าย 13.00–13.30</span><span class="dur">30 นาที</span></div>
           <h3>เปิดให้เข้าอาคาร / ลงทะเบียนนิสิตใหม่</h3>
           <p class="sub">ระบบ face detection โดยสำนักบริหารการศึกษา — นิสิตลงทะเบียนใต้อาคารแล้วขึ้นมานั่งประจำคณะ ถ้าที่กันไว้เต็มให้ไปนั่งโซนรวมคละคณะ</p>
           <div class="do">
@@ -252,7 +280,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 08.30–09.00</span><span class="tb a">บ่าย 13.30–14.00</span></div>
+          <div class="times"><span class="tb m">เช้า 08.30–09.00</span><span class="tb a">บ่าย 13.30–14.00</span><span class="dur">30 นาที</span></div>
           <h3>การแสดงต้อนรับนิสิตใหม่</h3>
           <p class="sub">ชมรม KU Band (20 นาที) + ชมรม KU Dance (10 นาที)</p>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>ชวนน้องมีส่วนร่วม ปรบมือ เอนเตอร์เทนน้องไปด้วยกัน</p></div>
@@ -261,7 +289,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 09.00–09.10</span><span class="tb a">บ่าย 14.00–14.10</span></div>
+          <div class="times"><span class="tb m">เช้า 09.00–09.10</span><span class="tb a">บ่าย 14.00–14.10</span><span class="dur">10 นาที</span></div>
           <h3>พิธีกรนำเข้าสู่โครงการ</h3>
           <p class="sub">พิธีกรจากชมรมส่งเสริมศิลปะการพูด (PSC)</p>
         </div>
@@ -269,7 +297,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 09.10–09.57</span><span class="tb a">บ่าย 14.10–14.57</span></div>
+          <div class="times"><span class="tb m">เช้า 09.10–09.57</span><span class="tb a">บ่าย 14.10–14.57</span><span class="dur">47 นาที</span></div>
           <h3>แนะนำมหาวิทยาลัย + Clip VDO</h3>
           <ul class="clips">
             <li>Clip "5 เรื่องต้องรู้ KU FRESHY" <span class="t">(12 นาที)</span></li>
@@ -282,7 +310,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 09.57–10.10</span><span class="tb a">บ่าย 14.57–15.10</span></div>
+          <div class="times"><span class="tb m">เช้า 09.57–10.10</span><span class="tb a">บ่าย 14.57–15.10</span><span class="dur">13 นาที</span></div>
           <h3>พักเบรก + อาหารว่าง</h3>
           <p class="sub">พักรับประทานอาหารว่าง / ช่วงนี้มีสัมภาษณ์นิสิตใหม่</p>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>แจกของว่างให้น้อง แล้วเก็บขยะแยกประเภท (ดูวิธีแยกขยะหัวข้อถัดไป)</p></div>
@@ -291,7 +319,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 10.10–10.35</span><span class="tb a">บ่าย 15.10–15.35</span></div>
+          <div class="times"><span class="tb m">เช้า 10.10–10.35</span><span class="tb a">บ่าย 15.10–15.35</span><span class="dur">25 นาที</span></div>
           <h3>สอนร้องเพลงพระราชนิพนธ์เกษตรศาสตร์</h3>
           <p class="sub">โดย คุณจตุพร สุวรรณสุขุม (ร่วมกับ KU Band + ชมรมเชียร์และแปรอักษร)</p>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>ยืนฝึกร้องเพลงไปพร้อมกับน้อง อย่าปล่อยให้น้องยืนคนเดียว</p></div>
@@ -300,7 +328,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 10.35–11.20</span><span class="tb a">บ่าย 15.35–16.20</span></div>
+          <div class="times"><span class="tb m">เช้า 10.35–11.20</span><span class="tb a">บ่าย 15.35–16.20</span><span class="dur">45 นาที</span></div>
           <h3>เปิดตัวผู้บริหาร + พิธีเทียนชัยอุดมการณ์</h3>
           <p class="sub">เปิดตัวผู้บริหาร · กล่าวต้อนรับ KU86 · มอบต้นนนทรี · จุดเทียนชัยอุดมการณ์ · ร้องเพลงพระราชนิพนธ์ · ผู้บริหารทักทายนิสิตหน้าเวที</p>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>แจกเทียนให้น้องได้เลย แต่ <b>รอจนบนเวทีเริ่มจุดเทียนก่อน</b> ค่อยให้น้อง ๆ จุดเทียนต่อกัน</p></div>
@@ -309,7 +337,7 @@
 
       <div class="tl">
         <div class="tl-card">
-          <div class="times"><span class="tb m">เช้า 11.20–11.45</span><span class="tb a">บ่าย 16.20–16.45</span></div>
+          <div class="times"><span class="tb m">เช้า 11.20–11.45</span><span class="tb a">บ่าย 16.20–16.45</span><span class="dur">25 นาที</span></div>
           <h3>ทำแบบประเมิน + แจกของที่ระลึก</h3>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>QR Code ขึ้นจอโปรเจคเตอร์ / ส่งให้ในไลน์กลุ่มพี่เลี้ยง ให้น้องสแกนทำแบบประเมิน แล้วจึง <b>แจกของที่ระลึก (กระเป๋า)</b> ให้น้อง</p></div>
         </div>
@@ -317,7 +345,7 @@
 
       <div class="tl end">
         <div class="tl-card">
-          <div class="times"><span class="tb solo">ปิดท้าย (20 นาที)</span></div>
+          <div class="times"><span class="tb solo">ปิดท้าย</span><span class="dur">20 นาที</span></div>
           <h3>การแสดงปิดท้าย — ชมรมรวมดาวกระจุย</h3>
           <p class="sub">หลังเสร็จสิ้นกิจกรรม นิสิตสามารถออกได้ทุกประตูของอาคาร</p>
         </div>
