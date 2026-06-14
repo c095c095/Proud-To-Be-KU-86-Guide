@@ -29,7 +29,7 @@
   .topwrap{position:sticky;top:0;z-index:50;background:var(--green);box-shadow:0 2px 8px rgba(0,40,38,.18)}
   .topbar{display:flex;align-items:center;gap:8px;padding:9px 14px;color:#fff}
   .topbar .badge{background:var(--gold);color:#3a2700;font-weight:800;font-size:12px;padding:3px 9px;border-radius:999px;white-space:nowrap}
-  .topbar .ttl{font-weight:800;font-size:15px;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .ttl{flex:1;min-width:0;font-weight:800;font-size:15px;letter-spacing:.2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   nav.nav{display:flex;gap:8px;overflow-x:auto;padding:8px 12px;background:var(--green-d);scrollbar-width:none}
   nav.nav::-webkit-scrollbar{display:none}
   nav.nav a{
@@ -156,6 +156,50 @@
   #toTop{position:fixed;right:16px;bottom:18px;z-index:60;width:50px;height:50px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:22px;font-weight:800;box-shadow:0 4px 14px rgba(0,60,58,.32);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;cursor:pointer}
   #toTop.show{opacity:1;pointer-events:auto;transform:translateY(0)}
 
+  /* ===== Day picker ===== */
+  .picker{position:fixed;inset:0;z-index:200;background:linear-gradient(160deg,#00514f,#003a39);display:flex;align-items:center;justify-content:center;padding:22px}
+  .picker[hidden]{display:none}
+  .picker-box{position:relative;width:100%;max-width:420px;background:#fff;border-radius:22px;padding:26px 20px;box-shadow:0 18px 50px rgba(0,0,0,.35);text-align:center}
+  .picker-close{position:absolute;top:8px;right:10px;background:transparent;border:none;color:var(--muted);font-size:20px;font-weight:800;line-height:1;padding:8px;cursor:pointer}
+  .picker-kicker{margin:0 0 4px;font-size:12px;letter-spacing:3px;font-weight:800;color:var(--green)}
+  .picker-box h2{margin:0 0 4px;font-size:23px;color:var(--green-d);font-weight:800}
+  .picker-sub{margin:0 0 18px;color:var(--muted);font-size:14.5px}
+  .day-opt{display:flex;flex-direction:column;align-items:center;gap:1px;width:100%;background:var(--green-l2);border:2px solid var(--line);border-radius:14px;padding:15px;margin-bottom:11px;cursor:pointer;transition:border-color .15s,transform .1s;font-family:inherit}
+  .day-opt:active{transform:scale(.98)}
+  .day-opt b{font-size:19px;color:var(--green-d);font-weight:800}
+  .day-opt span{font-size:13.5px;color:var(--muted);font-weight:600}
+  .day-opt.both{background:var(--green);border-color:var(--green)}
+  .day-opt.both b{color:#fff} .day-opt.both span{color:#cfe7e3}
+
+  /* ===== Day chip / change / switch ===== */
+  .badge.daychip{border:none;cursor:pointer;font-family:inherit}
+  .change-btn{flex:0 0 auto;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.30);color:#fff;font-weight:700;font-size:13px;padding:7px 12px;border-radius:999px;cursor:pointer;white-space:nowrap;font-family:inherit}
+  .day-switch{display:inline-flex;gap:4px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:4px;margin-top:6px}
+  .day-switch[hidden]{display:none}
+  .day-switch button{border:none;background:transparent;color:#eaf4f2;font-weight:800;font-size:15px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;min-height:42px}
+  .day-switch button.active{background:#fff;color:var(--green-d)}
+  .day-content[hidden]{display:none}
+
+  /* ===== Live status ===== */
+  .live{margin:14px 14px 0;border-radius:16px;padding:15px 16px;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff}
+  .live[hidden]{display:none}
+  .live-top{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:1px;color:var(--muted);margin-bottom:7px}
+  .live .ld{width:11px;height:11px;border-radius:50%;background:var(--muted);flex:0 0 auto}
+  .live .big{font-size:20px;font-weight:800;color:var(--ink);line-height:1.3}
+  .live .small{margin-top:7px;font-size:14.5px;color:var(--muted);font-weight:600;line-height:1.55}
+  .live .small b{color:var(--green-d);font-weight:800}
+  .live--during{border-color:#bfe0cf;background:linear-gradient(160deg,#eef9f2,#fff)}
+  .live--during .live-top{color:#1e7a47}
+  .live--during .ld{background:#1e9e5a;animation:pulse 1.7s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(30,158,90,.55)}70%{box-shadow:0 0 0 9px rgba(30,158,90,0)}100%{box-shadow:0 0 0 0 rgba(30,158,90,0)}}
+  .live--before .live-top,.live--gap .live-top,.live--between .live-top{color:var(--gold-d)}
+  .live--before .ld,.live--gap .ld,.live--between .ld{background:var(--gold)}
+  .live--done{background:linear-gradient(155deg,var(--green),#00504e);border:none;text-align:center;padding:26px 20px}
+  .live--done .live-top{color:#bfe9df;justify-content:center}
+  .live--done .ld{background:#bfe9df}
+  .live--done .big{color:#fff;font-size:23px}
+  .live--done .small{color:#d7ece9;font-size:15px}
+
   @media(min-width:600px){ .hero h1{font-size:34px} body{font-size:18px} }
 </style>
 </head>
@@ -165,8 +209,9 @@
   <!-- ===== STICKY TOP ===== -->
   <div class="topwrap">
     <div class="topbar">
-      <span class="badge">15 มิ.ย.</span>
-      <span class="ttl">คู่มือพี่เลี้ยง · Proud to be KU 86</span>
+      <button class="badge daychip" id="dayChip" type="button">15 มิ.ย.</button>
+      <span class="ttl">คู่มือพี่เลี้ยง KU86</span>
+      <button class="change-btn" id="changeDay" type="button">เปลี่ยนวัน</button>
     </div>
     <nav class="nav" id="nav">
       <a href="#before">ก่อนงาน</a>
@@ -183,10 +228,17 @@
     <p class="kicker">PROUD TO BE KU 86</p>
     <h1>คู่มือพี่เลี้ยง<small>STAFF GUIDE</small></h1>
     <div class="meta">
-      <div class="date">วันจันทร์ที่ <span class="d">15 มิถุนายน 2569</span></div>
+      <div class="date" id="heroDate">วันจันทร์ที่ <span class="d">15 มิถุนายน 2569</span></div>
       <div class="chip">อาคารจักรพันธ์เพ็ญศิริ</div>
+      <div class="day-switch" id="daySwitch" hidden>
+        <button type="button" data-day="15">จ. 15 มิ.ย.</button>
+        <button type="button" data-day="16">อ. 16 มิ.ย.</button>
+      </div>
     </div>
   </header>
+
+  <!-- ===== Live status: ตอนนี้ทำกิจกรรมอะไร ===== -->
+  <div class="live" id="live" hidden></div>
 
   <!-- ===== 1. ก่อนเริ่มงาน ===== -->
   <section id="before">
@@ -264,7 +316,7 @@
 
   <!-- ===== 3. กำหนดการ / Timeline ===== -->
   <section id="timeline">
-    <div class="sec-head"><span class="n">3</span><h2>กำหนดการวันที่ 15</h2></div>
+    <div class="sec-head"><span class="n">3</span><h2>กำหนดการ <span class="day-label">วันที่ 15</span></h2></div>
     <p class="legend"><span><span class="dot m"></span>รอบเช้า 08.00–12.00</span><span><span class="dot a"></span>รอบบ่าย 13.00–17.00</span></p>
     <p class="lead" style="margin:-4px 2px 14px">รอบเช้าและบ่ายเป็นกิจกรรมเดียวกัน คนละคณะ ดูเวลาของรอบที่ตัวเองดูแลได้เลย</p>
 
@@ -389,41 +441,81 @@
     </div>
   </section>
 
-  <!-- ===== 6. คณะวันนี้ ===== -->
+  <!-- ===== 6. คณะที่ดูแล ===== -->
   <section id="faculty">
-    <div class="sec-head"><span class="n">6</span><h2>คณะที่ดูแลวันที่ 15</h2></div>
+    <div class="sec-head"><span class="n">6</span><h2>คณะที่ดูแล<span class="day-label">วันที่ 15</span></h2></div>
 
-    <div class="fac am">
-      <div class="fhd"><span>รอบเช้า</span><span class="tm">08.00–12.00 น.</span></div>
-      <table>
-        <tr><td class="fn">วิทยาศาสตร์</td><td class="fa">A1–A8</td><td class="fc">112 คน</td></tr>
-        <tr><td class="fn">มนุษยศาสตร์</td><td class="fa">A9–A16</td><td class="fc">112 คน</td></tr>
-        <tr><td class="fn">ว.บูรณาการศาสตร์</td><td class="fa">A17–A20</td><td class="fc">60 คน</td></tr>
-        <tr><td class="fn">แพทยศาสตร์</td><td class="fa">A21–A24</td><td class="fc">48 คน</td></tr>
-        <tr><td class="fn">พยาบาลศาสตร์</td><td class="fa">A25–A32</td><td class="fc">70 คน</td></tr>
-        <tr><td class="fn">สถาปัตยกรรมศาสตร์</td><td class="fa">A33–A40</td><td class="fc">112 คน</td></tr>
-      </table>
+    <div class="day-content" data-day="15">
+      <div class="fac am">
+        <div class="fhd"><span>รอบเช้า</span><span class="tm">08.00–12.00 น.</span></div>
+        <table>
+          <tr><td class="fn">วิทยาศาสตร์</td><td class="fa">A1–A8</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">มนุษยศาสตร์</td><td class="fa">A9–A16</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">ว.บูรณาการศาสตร์</td><td class="fa">A17–A20</td><td class="fc">60 คน</td></tr>
+          <tr><td class="fn">แพทยศาสตร์</td><td class="fa">A21–A24</td><td class="fc">48 คน</td></tr>
+          <tr><td class="fn">พยาบาลศาสตร์</td><td class="fa">A25–A32</td><td class="fc">70 คน</td></tr>
+          <tr><td class="fn">สถาปัตยกรรมศาสตร์</td><td class="fa">A33–A40</td><td class="fc">112 คน</td></tr>
+        </table>
+      </div>
+      <div class="fac pm">
+        <div class="fhd"><span>รอบบ่าย</span><span class="tm">13.00–17.00 น.</span></div>
+        <table>
+          <tr><td class="fn">สังคมศาสตร์</td><td class="fa">A1–A12</td><td class="fc">168 คน</td></tr>
+          <tr><td class="fn">ประมง</td><td class="fa">A13–A20</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">เภสัชศาสตร์</td><td class="fa">A23–A24</td><td class="fc">24 คน</td></tr>
+          <tr><td class="fn">บริหารธุรกิจ</td><td class="fa">A21–22, A25–40</td><td class="fc">224 คน</td></tr>
+        </table>
+        <div class="fcap">ที่นั่งโซน A = ที่นั่งสำรองด้านหน้าของคณะ ส่วนที่ล้นไปนั่งโซนรวม B / C / D</div>
+      </div>
     </div>
 
-    <div class="fac pm">
-      <div class="fhd"><span>รอบบ่าย</span><span class="tm">13.00–17.00 น.</span></div>
-      <table>
-        <tr><td class="fn">สังคมศาสตร์</td><td class="fa">A1–A12</td><td class="fc">168 คน</td></tr>
-        <tr><td class="fn">ประมง</td><td class="fa">A13–A20</td><td class="fc">112 คน</td></tr>
-        <tr><td class="fn">เภสัชศาสตร์</td><td class="fa">A23–A24</td><td class="fc">24 คน</td></tr>
-        <tr><td class="fn">บริหารธุรกิจ</td><td class="fa">A21–22, A25–40</td><td class="fc">224 คน</td></tr>
-      </table>
-      <div class="fcap">ที่นั่งโซน A = ที่นั่งสำรองด้านหน้าของคณะ ส่วนที่ล้นไปนั่งโซนรวม B / C / D</div>
+    <div class="day-content" data-day="16" hidden>
+      <div class="fac am">
+        <div class="fhd"><span>รอบเช้า</span><span class="tm">08.00–12.00 น.</span></div>
+        <table>
+          <tr><td class="fn">เศรษฐศาสตร์</td><td class="fa">A1–A8</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">อุตสาหกรรมเกษตร</td><td class="fa">A9–A16</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">สัตวแพทยศาสตร์</td><td class="fa">A17–A20</td><td class="fc">60 คน</td></tr>
+          <tr><td class="fn">เทคนิคการสัตวแพทย์</td><td class="fa">A21–A26</td><td class="fc">84 คน</td></tr>
+          <tr><td class="fn">สิ่งแวดล้อม</td><td class="fa">A27–A32</td><td class="fc">84 คน</td></tr>
+          <tr><td class="fn">วนศาสตร์</td><td class="fa">A33–A40</td><td class="fc">112 คน</td></tr>
+        </table>
+      </div>
+      <div class="fac pm">
+        <div class="fhd"><span>รอบบ่าย</span><span class="tm">13.00–17.00 น.</span></div>
+        <table>
+          <tr><td class="fn">วิศวกรรมศาสตร์</td><td class="fa">A1–A8</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">สหวิทยาการการจัดการ</td><td class="fa">A9–A16</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">เว้นว่าง / สำรอง</td><td class="fa">A17–A20</td><td class="fc">–</td></tr>
+          <tr><td class="fn">เกษตร</td><td class="fa">A21–A24</td><td class="fc">112 คน</td></tr>
+          <tr><td class="fn">ชลประทาน</td><td class="fa">A25–A32</td><td class="fc">80 คน</td></tr>
+          <tr><td class="fn">ศึกษาศาสตร์</td><td class="fa">A33–A40</td><td class="fc">140 คน</td></tr>
+        </table>
+        <div class="fcap">ที่นั่งโซน A = ที่นั่งสำรองด้านหน้าของคณะ ส่วนที่ล้นไปนั่งโซนรวม B / C / D</div>
+      </div>
     </div>
   </section>
 
   <footer>
-    <p><span class="ku">PROUD TO BE KU 86</span><br>คู่มือนิสิตพี่เลี้ยง · 15 มิถุนายน 2569 · อาคารจักรพันธ์เพ็ญศิริ</p>
+    <p><span class="ku">PROUD TO BE KU 86</span><br>คู่มือนิสิตพี่เลี้ยง · <span id="footDate">15 มิถุนายน 2569</span> · อาคารจักรพันธ์เพ็ญศิริ</p>
   </footer>
 
 </div>
 
 <button id="toTop" type="button" aria-label="กลับขึ้นบนสุด">↑</button>
+
+<!-- ===== Day picker overlay ===== -->
+<div class="picker" id="picker" hidden>
+  <div class="picker-box">
+    <button class="picker-close" id="pickerClose" type="button" hidden aria-label="ปิด">✕</button>
+    <p class="picker-kicker">PROUD TO BE KU 86</p>
+    <h2>คุณทำงานวันไหนบ้าง?</h2>
+    <p class="picker-sub">เลือกวันที่คุณเป็นพี่เลี้ยง ระบบจะแสดงรายละเอียดของวันนั้นให้</p>
+    <button class="day-opt" type="button" data-days="15"><b>วันที่ 15 มิ.ย.</b><span>วันจันทร์</span></button>
+    <button class="day-opt" type="button" data-days="16"><b>วันที่ 16 มิ.ย.</b><span>วันอังคาร</span></button>
+    <button class="day-opt both" type="button" data-days="15,16"><b>ทั้งสองวัน</b><span>15–16 มิ.ย. · เริ่มที่วันใกล้สุด</span></button>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -486,6 +578,176 @@
     }, {passive:true});
     toTop.addEventListener("click", function(){ window.scrollTo({top:0, behavior:"smooth"}); });
   }
+})();
+
+/* ===== Day selection + Live activity status ===== */
+(function(){
+  "use strict";
+  var WK = "ptbku:v2:workdays";
+
+  var DAY = {
+    "15": { dow:"วันจันทร์", short:"15 มิ.ย.", full:"15 มิถุนายน 2569" },
+    "16": { dow:"วันอังคาร", short:"16 มิ.ย.", full:"16 มิถุนายน 2569" }
+  };
+
+  // Reusable schedule engine — times shared by live-status (and any future time feature).
+  // m = รอบเช้า [start,end], a = รอบบ่าย [start,end]  (24h "HH:MM")
+  var SCHEDULE = [
+    { t:"ลงทะเบียน / เข้าอาคาร",                 m:["08:00","08:30"], a:["13:00","13:30"] },
+    { t:"การแสดงต้อนรับ (KU Band + KU Dance)",    m:["08:30","09:00"], a:["13:30","14:00"] },
+    { t:"พิธีกรนำเข้าสู่โครงการ",                  m:["09:00","09:10"], a:["14:00","14:10"] },
+    { t:"แนะนำมหาวิทยาลัย + Clip VDO",            m:["09:10","09:57"], a:["14:10","14:57"] },
+    { t:"พักเบรก + อาหารว่าง",                    m:["09:57","10:10"], a:["14:57","15:10"] },
+    { t:"สอนร้องเพลงพระราชนิพนธ์เกษตรศาสตร์",      m:["10:10","10:35"], a:["15:10","15:35"] },
+    { t:"เปิดตัวผู้บริหาร + พิธีเทียนชัยอุดมการณ์", m:["10:35","11:20"], a:["15:35","16:20"] },
+    { t:"ทำแบบประเมิน + แจกของที่ระลึก",          m:["11:20","11:45"], a:["16:20","16:45"] },
+    { t:"การแสดงปิดท้าย (ชมรมรวมดาวกระจุย)",       m:["11:45","12:05"], a:["16:45","17:05"] }
+  ];
+  function toMin(s){ var p=s.split(":"); return (+p[0])*60 + (+p[1]); }
+  var FIRST_START = toMin("08:00");   // 480
+  var MORNING_END = toMin("12:05");   // 725
+  var AFT_START   = toMin("13:00");   // 780
+  var AFT_END     = toMin("17:05");   // 1025
+  var EVENT_YEAR = 2026, EVENT_MONTH = 5; // June (0-based)
+
+  function getWork(){ try{ var v=JSON.parse(localStorage.getItem(WK)); return (v&&v.length)?v.map(String):null; }catch(e){ return null; } }
+  function setWork(a){ try{ localStorage.setItem(WK, JSON.stringify(a)); }catch(e){} }
+  function evDate(d){ return new Date(EVENT_YEAR, EVENT_MONTH, +d); }
+
+  function nearest(){
+    var now=new Date();
+    var t=new Date(now.getFullYear(),now.getMonth(),now.getDate()).getTime();
+    return Math.abs(t-evDate(15).getTime()) <= Math.abs(t-evDate(16).getTime()) ? "15" : "16";
+  }
+  function fmtDur(ms){
+    if(ms<0) ms=0;
+    var tm=Math.floor(ms/60000), d=Math.floor(tm/1440), h=Math.floor((tm%1440)/60), m=tm%60, out=[];
+    if(d>0) out.push(d+" วัน");
+    if(h>0) out.push(h+" ชม.");
+    out.push(m+" นาที");
+    return out.join(" ");
+  }
+  function findNow(nm){
+    for(var i=0;i<SCHEDULE.length;i++){
+      var s=SCHEDULE[i];
+      if(nm>=toMin(s.m[0]) && nm<toMin(s.m[1])) return {i:i, end:toMin(s.m[1])};
+      if(nm>=toMin(s.a[0]) && nm<toMin(s.a[1])) return {i:i, end:toMin(s.a[1])};
+    }
+    return null;
+  }
+
+  /* ---- DOM ---- */
+  var picker   = document.getElementById("picker");
+  var pickerX  = document.getElementById("pickerClose");
+  var daySwitch= document.getElementById("daySwitch");
+  var dayChip  = document.getElementById("dayChip");
+  var heroDate = document.getElementById("heroDate");
+  var footDate = document.getElementById("footDate");
+  var liveEl   = document.getElementById("live");
+
+  function applyDay(day){
+    var info=DAY[day]; if(!info) return;
+    if(dayChip)  dayChip.textContent = info.short;
+    if(heroDate) heroDate.innerHTML = info.dow + "ที่ <span class=\"d\">" + info.full + "</span>";
+    if(footDate) footDate.textContent = info.full;
+    [].slice.call(document.querySelectorAll(".day-label")).forEach(function(el){ el.textContent="วันที่ "+day; });
+    [].slice.call(document.querySelectorAll(".day-content")).forEach(function(el){ el.hidden = (el.getAttribute("data-day")!==day); });
+    if(daySwitch){ [].slice.call(daySwitch.querySelectorAll("button")).forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-day")===day); }); }
+  }
+
+  function initView(){
+    var work=getWork();
+    if(!work){ openPicker(); renderLive(); return; }
+    if(work.length>1){ if(daySwitch) daySwitch.hidden=false; applyDay(nearest()); }
+    else { if(daySwitch) daySwitch.hidden=true; applyDay(work[0]); }
+    renderLive();
+  }
+  function openPicker(){ if(!picker) return; if(pickerX) pickerX.hidden = !getWork(); picker.hidden=false; }
+  function closePicker(){ if(picker) picker.hidden=true; }
+
+  /* ---- Live status ---- */
+  function liveStatus(){
+    var work=getWork(); if(!work) return null;
+    var days=work.map(Number).sort(function(a,b){return a-b;});
+    var now=new Date();
+    var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var nm=now.getHours()*60+now.getMinutes();
+    var secMs=now.getSeconds()*1000;
+    for(var k=0;k<days.length;k++){
+      var d=days[k], diff=Math.round((evDate(d)-today)/86400000);
+      if(diff>0){ return {type:"before", day:d, ms:(evDate(d).getTime()+FIRST_START*60000)-now.getTime()}; }
+      if(diff===0){
+        if(nm<FIRST_START) return {type:"before", day:d, ms:(FIRST_START-nm)*60000-secMs};
+        var f=findNow(nm);
+        if(f) return {type:"during", idx:f.i, remain:f.end-nm};
+        if(nm>=MORNING_END && nm<AFT_START) return {type:"gap", ms:(AFT_START-nm)*60000-secMs};
+        if(nm>=AFT_END){
+          if(k<days.length-1) return {type:"between", day:d, next:days[k+1], ms:(evDate(days[k+1]).getTime()+FIRST_START*60000)-now.getTime()};
+          return {type:"done"};
+        }
+        var nx=findNext(nm); // safety
+        if(nx>=0) return {type:"during", idx:nx, remain:0};
+        return {type:"done"};
+      }
+      // diff<0: this day passed → check next
+    }
+    return {type:"done"};
+  }
+  function findNext(nm){
+    for(var i=0;i<SCHEDULE.length;i++){ if(nm<toMin(SCHEDULE[i].m[0]) || nm<toMin(SCHEDULE[i].a[0])) return i; }
+    return -1;
+  }
+
+  function renderLive(){
+    if(!liveEl) return;
+    var st=liveStatus();
+    if(!st){ liveEl.hidden=true; return; }
+    liveEl.hidden=false;
+    var cls="live", top="", big="", small="";
+    if(st.type==="before"){
+      cls+=" live--before"; top="ตอนนี้";
+      big="ยังไม่ถึงช่วงกิจกรรม";
+      small="เหลืออีก <b>"+fmtDur(st.ms)+"</b> ก่อนเริ่ม: "+SCHEDULE[0].t+" (08:00 น. · วันที่ "+st.day+")";
+    } else if(st.type==="during"){
+      cls+=" live--during"; top="กำลังดำเนินกิจกรรม";
+      big=SCHEDULE[st.idx].t;
+      var nx=(st.idx+1<SCHEDULE.length)?("ถัดไป: "+SCHEDULE[st.idx+1].t):"ช่วงสุดท้ายของวัน";
+      small=(st.remain>0?("อีกประมาณ <b>"+st.remain+" นาที</b> จะจบช่วงนี้ · "):"")+nx;
+    } else if(st.type==="gap"){
+      cls+=" live--gap"; top="พักระหว่างรอบ";
+      big="พักระหว่างรอบเช้า–บ่าย";
+      small="เริ่มรอบบ่ายอีก <b>"+fmtDur(st.ms)+"</b> (13:00 น.)";
+    } else if(st.type==="between"){
+      cls+=" live--between"; top="วันนี้เสร็จแล้ว";
+      big="ขอบคุณสำหรับวันที่ "+st.day+"!";
+      small="พบกันต่อวันที่ "+st.next+" · เริ่มอีก <b>"+fmtDur(st.ms)+"</b> (08:00 น.)";
+    } else { // done
+      cls+=" live--done"; top="ภารกิจเสร็จสมบูรณ์";
+      big="ขอบคุณนะ พี่เลี้ยง KU 86";
+      small="วันกิจกรรมที่คุณไปช่วยดูแลน้อง ๆ จบลงแล้ว ขอบคุณสำหรับแรงกาย แรงใจ และรอยยิ้มที่มอบให้น้องใหม่ทุกคน — แล้วพบกันใหม่ ชาว KU!";
+    }
+    liveEl.className=cls;
+    liveEl.innerHTML='<div class="live-top"><span class="ld"></span>'+top+'</div><div class="big">'+big+'</div><div class="small">'+small+'</div>';
+  }
+
+  /* ---- Events ---- */
+  if(picker){
+    [].slice.call(picker.querySelectorAll(".day-opt")).forEach(function(b){
+      b.addEventListener("click", function(){ setWork(b.getAttribute("data-days").split(",")); closePicker(); initView(); });
+    });
+  }
+  if(pickerX) pickerX.addEventListener("click", closePicker);
+  if(daySwitch){
+    [].slice.call(daySwitch.querySelectorAll("button")).forEach(function(b){
+      b.addEventListener("click", function(){ applyDay(b.getAttribute("data-day")); });
+    });
+  }
+  if(dayChip)   dayChip.addEventListener("click", openPicker);
+  var changeDay=document.getElementById("changeDay");
+  if(changeDay) changeDay.addEventListener("click", openPicker);
+
+  initView();
+  setInterval(renderLive, 30000);
 })();
 </script>
 </body>
