@@ -129,6 +129,13 @@
   .warn .m{flex:0 0 auto;width:28px;height:28px;border-radius:8px;background:var(--gold-l);color:var(--gold-d);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:1px}
   .warn p{margin:0;font-size:15.5px}
   .warn b{color:var(--green-d)}
+  .duty{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .duty:last-child{border-bottom:0}
+  .duty .dbadge{flex:0 0 auto;font-weight:800;font-size:12px;padding:4px 10px;border-radius:7px;margin-top:2px;letter-spacing:.5px;min-width:44px;text-align:center}
+  .dbadge.ok{background:var(--green-l);color:var(--green-d);border:1px solid #cfe5e1}
+  .dbadge.bad{background:#fcebe9;color:#c0392b;border:1px solid #f1c9c4}
+  .duty p{margin:0;font-size:15.5px}
+  .duty b{color:var(--green-d)}
 
   /* ===== Faculty ===== */
   .fac{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);background:#fff}
@@ -166,7 +173,7 @@
       <a href="#checkin">เช็คอิน</a>
       <a href="#timeline">กำหนดการ</a>
       <a href="#trash">แยกขยะ</a>
-      <a href="#remember">ข้อควรจำ</a>
+      <a href="#remember">หน้าที่</a>
       <a href="#faculty">คณะวันนี้</a>
     </nav>
   </div>
@@ -368,15 +375,17 @@
     </div>
   </section>
 
-  <!-- ===== 5. ข้อควรจำ ===== -->
+  <!-- ===== 5. หน้าที่พี่เลี้ยง ===== -->
   <section id="remember">
-    <div class="sec-head"><span class="n">5</span><h2>ข้อควรจำ</h2></div>
+    <div class="sec-head"><span class="n">5</span><h2>หน้าที่ · ควร / ไม่ควรทำ</h2></div>
     <div class="card">
-      <div class="warn"><span class="m">!</span><p><b>ห้ามปล่อยน้องอยู่ลำพัง</b> โดยไม่มีพี่ — ถ้าต้องลุก (เช่น เข้าห้องน้ำ) ให้ฝากพี่เลี้ยงกลุ่มด้านหลังช่วยดูแลแทน</p></div>
-      <div class="warn"><span class="m">!</span><p><b>น้องต้องรู้พิกัดที่นั่งตัวเอง</b> เผื่อไปเข้าห้องน้ำแล้วกลับมาให้ถูกกลุ่ม</p></div>
-      <div class="warn"><span class="m">!</span><p><b>มีส่วนร่วมทุกกิจกรรม</b> รู้ลำดับคิวบนเวทีว่าถึงช่วงไหน จะได้ไม่ผิดคิวแจกของ</p></div>
-      <div class="warn"><span class="m">!</span><p><b>ไม่อนุญาตให้น้องออกก่อนเวลา</b> พูดโน้มน้าวให้อยู่จนครบ — ถ้าจำเป็นจริง ๆ พาน้องไปแจ้งที่โต๊ะลงทะเบียนขวามือของเวที</p></div>
-      <div class="warn"><span class="m">?</span><p>มีปัญหาหรือข้อสงสัย <b>ถามในกลุ่มไลน์</b> ได้เลย พี่ ๆ ยินดีช่วยเหลือ</p></div>
+      <div class="duty"><span class="dbadge ok">ควร</span><p><b>ทักทายน้องในกลุ่ม</b> ให้น้องเขียนชื่อบนสติกเกอร์แล้วติดที่หน้าอกด้านซ้าย และให้น้องรู้พิกัดที่นั่งตัวเอง เผื่อไปห้องน้ำแล้วกลับมาถูกกลุ่ม</p></div>
+      <div class="duty"><span class="dbadge ok">ควร</span><p><b>ชวนน้องพูดคุย</b> กระตุ้นให้น้องมีส่วนร่วมทุกช่วง ทำไปพร้อมน้อง ตอบรับ/ปรบมือกับเวที</p></div>
+      <div class="duty"><span class="dbadge ok">ควร</span><p><b>มีสมาธิกับกิจกรรมบนเวที</b> รู้ว่าดำเนินถึงขั้นไหน ช่วงไหนต้องแจกอะไรให้น้อง จะได้ไม่ผิดคิว</p></div>
+      <div class="duty"><span class="dbadge ok">ควร</span><p><b>ร่วมทุกกิจกรรมไปกับน้อง</b> โดยเฉพาะช่วงฝึกร้องเพลง ต้องยืนร้องไปกับน้อง ไม่ใช่ปล่อยน้องยืนแล้วพี่นั่งเล่น</p></div>
+      <div class="duty"><span class="dbadge ok">ควร</span><p><b>มีข้อสงสัยถามในกลุ่มไลน์</b> ได้เลย พี่ ๆ ยินดีช่วยเหลือ</p></div>
+      <div class="duty"><span class="dbadge bad">ห้าม</span><p><b>ห้ามปล่อยน้องอยู่ลำพังโดยไม่มีพี่</b> — ถ้าจำเป็นต้องลุก (เช่น เข้าห้องน้ำ) ให้ฝากพี่เลี้ยงกลุ่มด้านหลังช่วยดูแลแทน</p></div>
+      <div class="duty"><span class="dbadge bad">ห้าม</span><p><b>ไม่อนุญาตให้น้องออกก่อนเวลา</b> โน้มน้าวให้อยู่จนครบ — ถ้ามีเหตุจำเป็นจริง ๆ พาน้องไปแจ้งที่โต๊ะลงทะเบียนขวามือของเวที</p></div>
     </div>
   </section>
 
