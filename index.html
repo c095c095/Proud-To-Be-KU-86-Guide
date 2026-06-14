@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="format-detection" content="telephone=no">
-<title>คู่มือพี่เลี้ยง · Proud to be KU 86 · 15 มิ.ย.</title>
+<title>คู่มือพี่เลี้ยง · Proud to be KU 86 · 15–16 มิ.ย.</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -1144,6 +1144,7 @@
     if(dayChip)  dayChip.textContent = info.short;
     if(heroDate) heroDate.innerHTML = info.dow + "ที่ <span class=\"d\">" + info.full + "</span>";
     if(footDate) footDate.textContent = info.full;
+    document.title = "คู่มือพี่เลี้ยง · Proud to be KU 86 · " + info.short;
     [].slice.call(document.querySelectorAll(".day-label")).forEach(function(el){ el.textContent="วันที่ "+day; });
     [].slice.call(document.querySelectorAll(".day-content")).forEach(function(el){ el.hidden = (el.getAttribute("data-day")!==day); });
     if(daySwitch){ [].slice.call(daySwitch.querySelectorAll("button")).forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-day")===day); }); }
