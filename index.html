@@ -200,6 +200,12 @@
   .live--done .big{color:#fff;font-size:23px}
   .live--done .small{color:#d7ece9;font-size:15px}
 
+  /* ===== Timeline "ถึงเวลาแล้ว" marker ===== */
+  .tl-card.is-now{border-color:#e9b0ad;box-shadow:0 0 0 2px rgba(214,40,40,.16),var(--shadow)}
+  .tl-card.is-now h3::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:#e02020;margin-right:9px;vertical-align:middle;animation:blinkRed 1s steps(1,end) infinite}
+  .tl-card.is-now h3{color:#c01c1c}
+  @keyframes blinkRed{0%,49%{opacity:1;box-shadow:0 0 7px 1px rgba(224,32,32,.75)}50%,100%{opacity:.2;box-shadow:0 0 0 0 rgba(224,32,32,0)}}
+
   @media(min-width:600px){ .hero h1{font-size:34px} body{font-size:18px} }
 </style>
 </head>
@@ -613,6 +619,18 @@
   function getWork(){ try{ var v=JSON.parse(localStorage.getItem(WK)); return (v&&v.length)?v.map(String):null; }catch(e){ return null; } }
   function setWork(a){ try{ localStorage.setItem(WK, JSON.stringify(a)); }catch(e){} }
   function evDate(d){ return new Date(EVENT_YEAR, EVENT_MONTH, +d); }
+  // Preview hook: add ?t=HH:MM to the URL to simulate the current time on your selected day (for testing the live status / red marker).
+  function effectiveNow(){
+    var m = location.search.match(/[?&]t=(\d{1,2})[:.](\d{2})/);
+    if(m){
+      var work = getWork() || ["15"];
+      var dd = work.map(Number).sort(function(a,b){return a-b;});
+      var base = evDate(dd[0]);
+      base.setHours(+m[1], +m[2], 0, 0);
+      return base;
+    }
+    return new Date();
+  }
 
   function nearest(){
     var now=new Date();
@@ -669,7 +687,7 @@
   function liveStatus(){
     var work=getWork(); if(!work) return null;
     var days=work.map(Number).sort(function(a,b){return a-b;});
-    var now=new Date();
+    var now=effectiveNow();
     var today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
     var nm=now.getHours()*60+now.getMinutes();
     var secMs=now.getSeconds()*1000;
@@ -728,6 +746,11 @@
     }
     liveEl.className=cls;
     liveEl.innerHTML='<div class="live-top"><span class="ld"></span>'+top+'</div><div class="big">'+big+'</div><div class="small">'+small+'</div>';
+    highlightTimeline((st.type==="during")?st.idx:-1);
+  }
+  function highlightTimeline(activeIdx){
+    var cards=document.querySelectorAll("#timeline .tl-card");
+    for(var i=0;i<cards.length;i++){ cards[i].classList.toggle("is-now", i===activeIdx); }
   }
 
   /* ---- Events ---- */
