@@ -229,7 +229,11 @@
   .mapfs-bar{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--green);color:#fff;font-weight:800;font-size:14px}
   .mapfs-close{flex:0 0 auto;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:20px;font-weight:800;width:42px;height:42px;border-radius:10px;cursor:pointer}
   .mapfs-inner{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:10px;background:#f1f8f7}
-  .mapd-fs{display:block;width:1740px;height:auto}
+  .mapd-fs{display:block;width:100%;max-width:none;height:auto}
+  .mapfs-ttl{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mapfs-ctrls{flex:0 0 auto;display:flex;gap:6px;align-items:center}
+  .mapfs-ctrls button{background:rgba(255,255,255,.2);border:none;color:#fff;font-weight:800;font-size:15px;min-width:40px;height:40px;padding:0 10px;border-radius:9px;cursor:pointer;font-family:inherit}
+  .mapfs-ctrls button:active{background:rgba(255,255,255,.38)}
   .share-btn{width:100%;margin-top:12px;font-family:inherit;text-align:left;cursor:pointer}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer .ku{color:var(--green-d);font-weight:800}
@@ -942,7 +946,15 @@
 
 <!-- ===== Fullscreen seating map ===== -->
 <div class="mapfs" id="mapFs" hidden>
-  <div class="mapfs-bar"><span>แผนผังที่นั่ง · เลื่อน/ซูมดูเลขที่นั่งได้</span><button class="mapfs-close" id="mapFsClose" type="button" aria-label="ปิด">✕</button></div>
+  <div class="mapfs-bar">
+    <span class="mapfs-ttl">แผนผังที่นั่ง</span>
+    <div class="mapfs-ctrls">
+      <button id="mapZoomOut" type="button" aria-label="ซูมออก">－</button>
+      <button id="mapZoomFit" type="button">พอดีจอ</button>
+      <button id="mapZoomIn" type="button" aria-label="ซูมเข้า">＋</button>
+      <button class="mapfs-close" id="mapFsClose" type="button" aria-label="ปิด">✕</button>
+    </div>
+  </div>
   <div class="mapfs-inner" id="mapFsInner"></div>
 </div>
 
@@ -1255,16 +1267,37 @@
   var closeBtn=document.getElementById("mapFsClose");
   var src=document.querySelector(".mapd");
   if(!openBtn || !fs || !inner || !src) return;
+  var RATIO=680/1160, MAXS=6;
+  var svgEl=null, baseW=0, scale=1;
+  function apply(){ if(svgEl){ svgEl.style.width=Math.round(baseW*scale)+"px"; } }
+  function fit(){ baseW=Math.max(120, inner.clientWidth-20); scale=1; apply(); }
+  function zoom(mult){
+    if(!svgEl) return;
+    var w=baseW*scale, h=w*RATIO;
+    var cx=(inner.scrollLeft+inner.clientWidth/2)/w;
+    var cy=(inner.scrollTop+inner.clientHeight/2)/h;
+    scale=Math.min(MAXS, Math.max(1, scale*mult));
+    apply();
+    var nw=baseW*scale, nh=nw*RATIO;
+    inner.scrollLeft=cx*nw-inner.clientWidth/2;
+    inner.scrollTop=cy*nh-inner.clientHeight/2;
+  }
   function show(){
     inner.innerHTML="";
-    var c=src.cloneNode(true);
-    c.setAttribute("class","mapd-fs");
-    inner.appendChild(c);
+    svgEl=src.cloneNode(true);
+    svgEl.setAttribute("class","mapd-fs");
+    inner.appendChild(svgEl);
     fs.hidden=false;
+    if(window.requestAnimationFrame){ requestAnimationFrame(fit); } else { setTimeout(fit,30); }
   }
-  function hide(){ fs.hidden=true; inner.innerHTML=""; }
+  function hide(){ fs.hidden=true; inner.innerHTML=""; svgEl=null; }
   openBtn.addEventListener("click", show);
   if(closeBtn) closeBtn.addEventListener("click", hide);
+  var zi=document.getElementById("mapZoomIn"), zo=document.getElementById("mapZoomOut"), zf=document.getElementById("mapZoomFit");
+  if(zi) zi.addEventListener("click", function(){ zoom(1.4); });
+  if(zo) zo.addEventListener("click", function(){ zoom(1/1.4); });
+  if(zf) zf.addEventListener("click", fit);
+  window.addEventListener("resize", function(){ if(!fs.hidden) fit(); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !fs.hidden) hide(); });
 })();
 
