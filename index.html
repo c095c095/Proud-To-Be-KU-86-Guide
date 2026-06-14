@@ -202,6 +202,18 @@
   .map-svg{display:block;width:100%;height:auto;max-width:430px;margin:0 auto}
   .map-note{margin-top:12px;font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.7;text-align:left}
   .map-note b{color:var(--green-d)}
+  .mapd-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .mapd{display:block;width:1160px;max-width:none;height:auto}
+  .mapd text{font-family:inherit}
+  .sa{fill:#0f8b80}.sb{fill:#b3c23c}.sc{fill:#7cc35a}.sd{fill:#f4c22f}
+  .sl{font-size:11px;font-weight:700;text-anchor:middle}
+  .lw{fill:#ffffff}.ld{fill:#22372f}
+  .fhr{fill:#ffffff;stroke:#e23b2e;stroke-width:1.6}
+  .fhy{fill:#ffffff;stroke:#e0a100;stroke-width:1.6}
+  .fht{font-size:8.5px;font-weight:800;fill:#333333;text-anchor:middle}
+  .zbox{fill:#0f8b80}.zt{fill:#ffffff;font-size:24px;font-weight:800;text-anchor:middle}
+  .door{fill:#f4c22f}.doort{fill:#5a4500;font-size:8.5px;font-weight:800;text-anchor:middle}
+  .mlbl{font-weight:800;text-anchor:middle}
   .share-btn{width:100%;margin-top:12px;font-family:inherit;text-align:left;cursor:pointer}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
@@ -563,44 +575,228 @@
   <section id="map">
     <div class="sec-head"><span class="n">7</span><h2>แผนผังสถานที่</h2></div>
     <div class="card">
-      <p class="lead" style="margin:0 0 10px">ผังคร่าว ๆ เมื่อหันหน้าเข้าเวที (ไม่ใช่สเกลจริง)</p>
-      <svg class="map-svg" viewBox="0 0 360 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="แผนผังสถานที่จัดงาน">
-        <rect x="6" y="6" width="348" height="368" rx="14" fill="#f1f8f7" stroke="#cfe5e1" stroke-width="2"/>
-        <rect x="46" y="16" width="268" height="36" rx="8" fill="#006664"/>
-        <text x="180" y="39" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">เวที</text>
+      <p class="lead" style="margin:0 0 8px">ผังที่นั่งจริง (หันหน้าเข้าเวที) — เลื่อนซ้าย–ขวา / ซูมนิ้วเพื่อดูเลขที่นั่ง</p>
+      <div class="mapd-wrap">
+      <svg class="mapd" viewBox="0 0 1160 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ผังที่นั่ง Proud to be KU86">
+        <rect x="2" y="8" width="172" height="666" rx="10" fill="#f5f1e8"/>
+        <rect x="176" y="610" width="756" height="64" rx="10" fill="#f5f1e8"/>
+        <rect x="176" y="8" width="756" height="598" rx="14" fill="#ffffff" stroke="#94b3ae" stroke-width="2.5"/>
+        <text x="186" y="24" fill="#7d9a96" font-size="11" font-weight="800">ในอาคาร (ห้องประชุม)</text>
+        <text x="14" y="392" transform="rotate(-90 14 392)" fill="#a8842f" font-size="11" font-weight="800">ด้านนอก · ใต้อาคาร</text>
+        <text x="190" y="648" fill="#a8842f" font-size="11" font-weight="800">ด้านนอก · เปิดประตูออกมา</text>
+        <rect x="470" y="12" width="220" height="34" rx="6" fill="#9aa3a3"/><text x="580" y="35" class="mlbl" fill="#ffffff" font-size="16">เวที</text>
+        <rect x="812" y="14" width="6" height="20" fill="#e2342a"/><rect x="805" y="21" width="20" height="6" fill="#e2342a"/><text x="830" y="31" fill="#c0392b" font-size="13" font-weight="800">ห้องพยาบาล</text>
+        <text x="20" y="64" fill="#b87900" font-size="13" font-weight="800">◀ ฝั่งต้นสน</text>
+        <text x="20" y="88" fill="#5d716e" font-size="11" font-weight="700">จุดรับอาหารว่าง</text>
+        <text x="1140" y="64" text-anchor="end" fill="#b87900" font-size="13" font-weight="800">ฝั่ง รร.สาธิต ▶</text>
+        <text x="1150" y="300" text-anchor="end" fill="#c0392b" font-size="12" font-weight="800">ประตูทางเข้า–ทางออก</text>
+        <text x="1150" y="318" text-anchor="end" fill="#c0392b" font-size="12" font-weight="800">ให้ใช้คนละประตูกัน</text>
 
-        <text x="14" y="73" fill="#b87900" font-size="11" font-weight="800">◀ ฝั่งต้นสน</text>
-        <rect x="14" y="80" width="96" height="48" rx="9" fill="#fdf2d9" stroke="#eccf86" stroke-width="1.5"/>
-        <text x="62" y="100" text-anchor="middle" fill="#b87900" font-size="10.5" font-weight="800">ทางออกพี่เลี้ยง</text>
-        <text x="62" y="116" text-anchor="middle" fill="#b87900" font-size="10">+ รับของว่าง</text>
-        <rect x="14" y="246" width="96" height="40" rx="9" fill="#eef3f2" stroke="#d6e5e2" stroke-width="1.5"/>
-        <text x="62" y="270" text-anchor="middle" fill="#5d716e" font-size="11" font-weight="800">ห้องน้ำชาย</text>
+        <rect x="30" y="108" width="74" height="54" rx="10" class="zbox"/><text x="67" y="146" class="zt">A</text>
+        <rect x="30" y="246" width="74" height="54" rx="10" class="zbox"/><text x="67" y="284" class="zt">B</text>
+        <rect x="30" y="392" width="74" height="54" rx="10" class="zbox"/><text x="67" y="430" class="zt">C</text>
+        <rect x="30" y="516" width="74" height="54" rx="10" class="zbox"/><text x="67" y="554" class="zt">D</text>
 
-        <rect x="120" y="70" width="120" height="32" rx="8" fill="#e1efed" stroke="#cfe5e1"/>
-        <text x="180" y="91" text-anchor="middle" fill="#004d4b" font-size="12.5" font-weight="800">โซน A (หน้า)</text>
-        <rect x="120" y="108" width="120" height="32" rx="8" fill="#e1efed" stroke="#cfe5e1"/>
-        <text x="180" y="129" text-anchor="middle" fill="#004d4b" font-size="12.5" font-weight="800">โซน B</text>
-        <rect x="120" y="146" width="120" height="32" rx="8" fill="#e1efed" stroke="#cfe5e1"/>
-        <text x="180" y="167" text-anchor="middle" fill="#004d4b" font-size="12.5" font-weight="800">โซน C</text>
-        <rect x="120" y="184" width="120" height="32" rx="8" fill="#e1efed" stroke="#cfe5e1"/>
-        <text x="180" y="205" text-anchor="middle" fill="#004d4b" font-size="12.5" font-weight="800">โซน D (หลัง)</text>
+        <text x="146" y="210" fill="#5a4500" font-size="15" font-weight="800">◀</text>
+        <rect x="162" y="186" width="28" height="48" rx="6" class="door"/><text x="176" y="214" class="doort" transform="rotate(90 176 214)">ประตู</text>
+        <text x="146" y="500" fill="#5a4500" font-size="15" font-weight="800">◀</text>
+        <rect x="162" y="476" width="28" height="48" rx="6" class="door"/><text x="176" y="504" class="doort" transform="rotate(90 176 504)">ประตู</text>
 
-        <text x="346" y="73" text-anchor="end" fill="#b87900" font-size="11" font-weight="800">ฝั่ง รร.สาธิต ▶</text>
-        <rect x="250" y="80" width="96" height="52" rx="9" fill="#fdecec" stroke="#f1c9c4" stroke-width="1.5"/>
-        <text x="298" y="102" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="800">ห้องพยาบาล</text>
-        <text x="298" y="118" text-anchor="middle" fill="#c0392b" font-size="10">+ ลงทะเบียน</text>
-        <rect x="250" y="150" width="96" height="46" rx="9" fill="#fdf2d9" stroke="#eccf86" stroke-width="1.5"/>
-        <text x="298" y="170" text-anchor="middle" fill="#b87900" font-size="11" font-weight="800">ทางเข้า</text>
-        <text x="298" y="186" text-anchor="middle" fill="#b87900" font-size="10">น้องปี 1</text>
+        <line x1="545" y1="60" x2="545" y2="610" stroke="#d6e5e2" stroke-width="2" stroke-dasharray="5 5"/>
 
-        <rect x="120" y="246" width="106" height="40" rx="9" fill="#eef3f2" stroke="#d6e5e2" stroke-width="1.5"/>
-        <text x="173" y="270" text-anchor="middle" fill="#5d716e" font-size="11" font-weight="800">ห้องน้ำหญิง</text>
-        <rect x="232" y="246" width="114" height="40" rx="9" fill="#eef3f2" stroke="#d6e5e2" stroke-width="1.5"/>
-        <text x="289" y="270" text-anchor="middle" fill="#5d716e" font-size="11" font-weight="800">ห้องน้ำหญิง</text>
+        <rect class="fhr" x="210" y="54" width="102" height="20" rx="4"/><text class="fht" x="261" y="68">วิทยาศาสตร์ 112</text>
+        <rect class="fhy" x="318" y="54" width="102" height="20" rx="4"/><text class="fht" x="369" y="68">มนุษยศาสตร์ 112</text>
+        <rect class="fhr" x="426" y="54" width="48" height="20" rx="4"/><text class="fht" x="450" y="68" font-size="7">บูรณาการ 60</text>
+        <rect class="fhr" x="596" y="54" width="48" height="20" rx="4"/><text class="fht" x="620" y="68">แพทย์ 48</text>
+        <rect class="fhy" x="650" y="54" width="102" height="20" rx="4"/><text class="fht" x="701" y="68">พยาบาล 70</text>
+        <rect class="fhr" x="758" y="54" width="102" height="20" rx="4"/><text class="fht" x="809" y="68">สถาปัตย์ 112</text>
 
-        <text x="180" y="318" text-anchor="middle" fill="#8aa0a0" font-size="10.5" font-weight="700">▼ ด้านล่าง = ด้านนอกอาคาร / ทางออก</text>
+        <rect class="sa" x="210" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="234" y="95">A1</text>
+        <rect class="sa" x="210" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="234" y="127">A2</text>
+        <rect class="sa" x="210" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="234" y="159">A3</text>
+        <rect class="sa" x="210" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="234" y="191">A4</text>
+        <rect class="sa" x="264" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="288" y="95">A8</text>
+        <rect class="sa" x="264" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="288" y="127">A7</text>
+        <rect class="sa" x="264" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="288" y="159">A6</text>
+        <rect class="sa" x="264" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="288" y="191">A5</text>
+        <rect class="sa" x="318" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="342" y="95">A9</text>
+        <rect class="sa" x="318" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="342" y="127">A10</text>
+        <rect class="sa" x="318" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="342" y="159">A11</text>
+        <rect class="sa" x="318" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="342" y="191">A12</text>
+        <rect class="sa" x="372" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="396" y="95">A16</text>
+        <rect class="sa" x="372" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="396" y="127">A15</text>
+        <rect class="sa" x="372" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="396" y="159">A14</text>
+        <rect class="sa" x="372" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="396" y="191">A13</text>
+        <rect class="sa" x="426" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="450" y="95">A17</text>
+        <rect class="sa" x="426" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="450" y="127">A18</text>
+        <rect class="sa" x="426" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="450" y="159">A19</text>
+        <rect class="sa" x="426" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="450" y="191">A20</text>
+        <rect class="sa" x="596" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="620" y="95">A24</text>
+        <rect class="sa" x="596" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="620" y="127">A23</text>
+        <rect class="sa" x="596" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="620" y="159">A22</text>
+        <rect class="sa" x="596" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="620" y="191">A21</text>
+        <rect class="sa" x="650" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="674" y="95">A25</text>
+        <rect class="sa" x="650" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="674" y="127">A26</text>
+        <rect class="sa" x="650" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="674" y="159">A27</text>
+        <rect class="sa" x="650" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="674" y="191">A28</text>
+        <rect class="sa" x="704" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="728" y="95">A32</text>
+        <rect class="sa" x="704" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="728" y="127">A31</text>
+        <rect class="sa" x="704" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="728" y="159">A30</text>
+        <rect class="sa" x="704" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="728" y="191">A29</text>
+        <rect class="sa" x="758" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="782" y="95">A33</text>
+        <rect class="sa" x="758" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="782" y="127">A34</text>
+        <rect class="sa" x="758" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="782" y="159">A35</text>
+        <rect class="sa" x="758" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="782" y="191">A36</text>
+        <rect class="sa" x="812" y="78" width="48" height="26" rx="4"/><text class="sl lw" x="836" y="95">A40</text>
+        <rect class="sa" x="812" y="110" width="48" height="26" rx="4"/><text class="sl lw" x="836" y="127">A39</text>
+        <rect class="sa" x="812" y="142" width="48" height="26" rx="4"/><text class="sl lw" x="836" y="159">A38</text>
+        <rect class="sa" x="812" y="174" width="48" height="26" rx="4"/><text class="sl lw" x="836" y="191">A37</text>
+
+        <rect class="sb" x="210" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="239">B1</text>
+        <rect class="sb" x="210" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="271">B2</text>
+        <rect class="sb" x="210" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="303">B3</text>
+        <rect class="sb" x="210" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="335">B4</text>
+        <rect class="sb" x="264" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="239">B8</text>
+        <rect class="sb" x="264" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="271">B7</text>
+        <rect class="sb" x="264" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="303">B6</text>
+        <rect class="sb" x="264" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="335">B5</text>
+        <rect class="sb" x="318" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="239">B9</text>
+        <rect class="sb" x="318" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="271">B10</text>
+        <rect class="sb" x="318" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="303">B11</text>
+        <rect class="sb" x="318" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="335">B12</text>
+        <rect class="sb" x="372" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="239">B16</text>
+        <rect class="sb" x="372" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="271">B15</text>
+        <rect class="sb" x="372" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="303">B14</text>
+        <rect class="sb" x="372" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="335">B13</text>
+        <rect class="sb" x="426" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="239">B17</text>
+        <rect class="sb" x="426" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="271">B18</text>
+        <rect class="sb" x="426" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="303">B19</text>
+        <rect class="sb" x="426" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="335">B20</text>
+        <rect class="sb" x="480" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="239">B24</text>
+        <rect class="sb" x="480" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="271">B23</text>
+        <rect class="sb" x="480" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="303">B22</text>
+        <rect class="sb" x="480" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="335">B21</text>
+        <rect class="sb" x="596" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="239">B25</text>
+        <rect class="sb" x="596" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="271">B26</text>
+        <rect class="sb" x="596" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="303">B27</text>
+        <rect class="sb" x="596" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="335">B28</text>
+        <rect class="sb" x="650" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="239">B32</text>
+        <rect class="sb" x="650" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="271">B31</text>
+        <rect class="sb" x="650" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="303">B30</text>
+        <rect class="sb" x="650" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="335">B29</text>
+        <rect class="sb" x="704" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="239">B33</text>
+        <rect class="sb" x="704" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="271">B34</text>
+        <rect class="sb" x="704" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="303">B35</text>
+        <rect class="sb" x="704" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="335">B36</text>
+        <rect class="sb" x="758" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="239">B40</text>
+        <rect class="sb" x="758" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="271">B39</text>
+        <rect class="sb" x="758" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="303">B38</text>
+        <rect class="sb" x="758" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="335">B37</text>
+        <rect class="sb" x="812" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="239">B41</text>
+        <rect class="sb" x="812" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="271">B42</text>
+        <rect class="sb" x="812" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="303">B43</text>
+        <rect class="sb" x="812" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="335">B44</text>
+        <rect class="sb" x="866" y="222" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="239">B48</text>
+        <rect class="sb" x="866" y="254" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="271">B47</text>
+        <rect class="sb" x="866" y="286" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="303">B46</text>
+        <rect class="sb" x="866" y="318" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="335">B45</text>
+
+        <rect class="sc" x="210" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="383">C1</text>
+        <rect class="sc" x="210" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="415">C2</text>
+        <rect class="sc" x="210" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="447">C3</text>
+        <rect class="sc" x="210" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="479">C4</text>
+        <rect class="sc" x="264" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="383">C8</text>
+        <rect class="sc" x="264" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="415">C7</text>
+        <rect class="sc" x="264" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="447">C6</text>
+        <rect class="sc" x="264" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="479">C5</text>
+        <rect class="sc" x="318" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="383">C9</text>
+        <rect class="sc" x="318" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="415">C10</text>
+        <rect class="sc" x="318" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="447">C11</text>
+        <rect class="sc" x="318" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="479">C12</text>
+        <rect class="sc" x="372" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="383">C16</text>
+        <rect class="sc" x="372" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="415">C15</text>
+        <rect class="sc" x="372" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="447">C14</text>
+        <rect class="sc" x="372" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="479">C13</text>
+        <rect class="sc" x="426" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="383">C17</text>
+        <rect class="sc" x="426" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="415">C18</text>
+        <rect class="sc" x="426" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="447">C19</text>
+        <rect class="sc" x="426" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="479">C20</text>
+        <rect class="sc" x="480" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="383">C24</text>
+        <rect class="sc" x="480" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="415">C23</text>
+        <rect class="sc" x="480" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="447">C22</text>
+        <rect class="sc" x="480" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="479">C21</text>
+        <rect class="sc" x="596" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="383">C25</text>
+        <rect class="sc" x="596" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="415">C26</text>
+        <rect class="sc" x="596" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="447">C27</text>
+        <rect class="sc" x="596" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="479">C28</text>
+        <rect class="sc" x="650" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="383">C32</text>
+        <rect class="sc" x="650" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="415">C31</text>
+        <rect class="sc" x="650" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="447">C30</text>
+        <rect class="sc" x="650" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="479">C29</text>
+        <rect class="sc" x="704" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="383">C33</text>
+        <rect class="sc" x="704" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="415">C34</text>
+        <rect class="sc" x="704" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="447">C35</text>
+        <rect class="sc" x="704" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="479">C36</text>
+        <rect class="sc" x="758" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="383">C40</text>
+        <rect class="sc" x="758" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="415">C39</text>
+        <rect class="sc" x="758" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="447">C38</text>
+        <rect class="sc" x="758" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="479">C37</text>
+        <rect class="sc" x="812" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="383">C41</text>
+        <rect class="sc" x="812" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="415">C42</text>
+        <rect class="sc" x="812" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="447">C43</text>
+        <rect class="sc" x="812" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="479">C44</text>
+        <rect class="sc" x="866" y="366" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="383">C48</text>
+        <rect class="sc" x="866" y="398" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="415">C47</text>
+        <rect class="sc" x="866" y="430" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="447">C46</text>
+        <rect class="sc" x="866" y="462" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="479">C45</text>
+
+        <rect class="sd" x="210" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="527">D1</text>
+        <rect class="sd" x="210" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="234" y="559">D2</text>
+        <rect class="sd" x="264" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="527">D4</text>
+        <rect class="sd" x="264" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="288" y="559">D3</text>
+        <rect class="sd" x="318" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="527">D5</text>
+        <rect class="sd" x="318" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="559">D6</text>
+        <rect class="sd" x="318" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="342" y="591">D7</text>
+        <rect class="sd" x="372" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="527">D9</text>
+        <rect class="sd" x="372" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="396" y="559">D8</text>
+        <rect class="sd" x="426" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="527">D10</text>
+        <rect class="sd" x="426" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="559">D11</text>
+        <rect class="sd" x="426" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="450" y="591">D12</text>
+        <rect class="sd" x="480" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="527">D15</text>
+        <rect class="sd" x="480" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="559">D14</text>
+        <rect class="sd" x="480" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="504" y="591">D13</text>
+        <rect class="sd" x="596" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="527">D16</text>
+        <rect class="sd" x="596" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="559">D17</text>
+        <rect class="sd" x="596" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="620" y="591">D18</text>
+        <rect class="sd" x="650" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="527">D21</text>
+        <rect class="sd" x="650" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="559">D20</text>
+        <rect class="sd" x="650" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="674" y="591">D19</text>
+        <rect class="sd" x="704" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="527">D22</text>
+        <rect class="sd" x="704" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="559">D23</text>
+        <rect class="sd" x="704" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="728" y="591">D24</text>
+        <rect class="sd" x="758" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="527">D27</text>
+        <rect class="sd" x="758" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="559">D26</text>
+        <rect class="sd" x="758" y="574" width="48" height="26" rx="4"/><text class="sl ld" x="782" y="591">D25</text>
+        <rect class="sd" x="812" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="527">D28</text>
+        <rect class="sd" x="812" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="836" y="559">D29</text>
+        <rect class="sd" x="866" y="510" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="527">D31</text>
+        <rect class="sd" x="866" y="542" width="48" height="26" rx="4"/><text class="sl ld" x="890" y="559">D30</text>
+
+        <text x="16" y="500" fill="#5d716e" font-size="11" font-weight="800">ชั้น 1</text>
+        <rect x="14" y="576" width="84" height="42" rx="8" fill="#9aa3a3"/><text x="56" y="595" class="mlbl" fill="#ffffff" font-size="10">จุดแยก</text><text x="56" y="608" class="mlbl" fill="#ffffff" font-size="10">ขยะ</text>
+        <ellipse cx="88" cy="648" rx="80" ry="18" fill="#cfe8f5" stroke="#a9d3ea"/><text x="88" y="653" class="mlbl" fill="#1c5a7a" font-size="11">ห้องน้ำชาย</text>
+        <ellipse cx="430" cy="648" rx="66" ry="20" fill="#f7c9dd"/><text x="430" y="653" class="mlbl" fill="#a23a63" font-size="11">ห้องน้ำ ญ</text>
+        <ellipse cx="700" cy="648" rx="66" ry="20" fill="#f7c9dd"/><text x="700" y="653" class="mlbl" fill="#a23a63" font-size="11">ห้องน้ำ ญ</text>
+
+        <rect x="956" y="470" width="192" height="158" rx="10" fill="#e9ecec" stroke="#cfd6d6"/>
+        <text x="1052" y="492" class="mlbl" fill="#5d716e" font-size="10">รูปแบบการจัดที่นั่งแต่ละกลุ่ม</text>
+        <circle cx="992" cy="516" r="6" fill="#3aa564"/><circle cx="1022" cy="516" r="6" fill="#3aa564"/><circle cx="1052" cy="516" r="6" fill="#3aa564"/><circle cx="1082" cy="516" r="6" fill="#3aa564"/><circle cx="1112" cy="516" r="6" fill="#3aa564"/>
+        <circle cx="992" cy="544" r="6" fill="#3aa564"/><circle cx="1022" cy="544" r="6" fill="#3aa564"/><circle cx="1052" cy="544" r="6" fill="#3aa564"/><circle cx="1082" cy="544" r="6" fill="#3aa564"/><circle cx="1112" cy="544" r="6" fill="#3aa564"/>
+        <circle cx="992" cy="572" r="6" fill="#3aa564"/><circle cx="1022" cy="572" r="6" fill="#3aa564"/><circle cx="1052" cy="572" r="6" fill="#3aa564"/><circle cx="1082" cy="572" r="6" fill="#3aa564"/><circle cx="1112" cy="572" r="7" fill="#e0a100"/>
+        <text x="1052" y="606" class="mlbl" fill="#c8920a" font-size="10">นิสิตพี่เลี้ยง = จุดสีทอง</text>
       </svg>
-      <div class="map-note"><b>ลงชื่อพี่เลี้ยง:</b> ระเบียงฝั่งต้นสน (COVER WAY) · <b>จุดทิ้งขยะ:</b> ชั้น 1 ลงบันไดด้านสวัสดิการ เลี้ยวซ้าย · <b>เข้า–ออก:</b> ใช้คนละประตูกัน</div>
+      </div>
+      <div class="map-note"><b>โซน A</b> = ที่นั่งคณะ (กรอบสี) · <b>ห้องน้ำชาย-หญิง</b> อยู่นอกอาคาร ชั้นเดียวกัน (เปิดประตูออกไป) · <b>จุดรับอาหารว่าง / จุดแยกขยะ</b> อยู่นอกอาคาร (ใต้อาคาร) · <b>ลงชื่อพี่เลี้ยง:</b> ระเบียงฝั่งต้นสน (COVER WAY) · <b>เข้า–ออก:</b> ใช้คนละประตูกัน</div>
     </div>
   </section>
 
