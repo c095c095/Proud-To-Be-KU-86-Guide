@@ -1,0 +1,16 @@
+{
+  "name": "คู่มือพี่เลี้ยง Proud to be KU 86",
+  "short_name": "พี่เลี้ยง KU86",
+  "description": "คู่มือนิสิตพี่เลี้ยง Proud to be KU 86 — กำหนดการ, แผนผังที่นั่ง, QR, เช็คลิสต์",
+  "lang": "th",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#006664",
+  "theme_color": "#006664",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
