@@ -159,6 +159,37 @@
   .drive-tx b{font-size:16.5px;color:var(--green-d);font-weight:800}
   .drive-tx span{font-size:13.5px;color:var(--muted);font-weight:600}
   .drive-arrow{flex:0 0 auto;color:var(--green);font-size:21px;font-weight:800}
+
+  /* ===== QR cards ===== */
+  .card.qr{text-align:center}
+  .qr-img{display:block;width:100%;max-width:340px;height:auto;margin:4px auto 10px;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:pointer}
+  .qr-img.poster{max-width:100%}
+  .card.qr .qr-info h3{font-size:16px;margin:0 0 3px;line-height:1.3}
+  .qr-meta{text-align:left;font-size:14px;color:var(--muted);font-weight:600;line-height:1.6}
+  .qr-steps{text-align:left;margin:10px 0 0;padding:0;list-style:none;counter-reset:q}
+  .qr-steps li{position:relative;counter-increment:q;padding:8px 0 8px 32px;font-size:14.5px;border-top:1px dashed var(--line)}
+  .qr-steps li:first-child{border-top:0}
+  .qr-steps li::before{content:counter(q);position:absolute;left:0;top:7px;width:23px;height:23px;border-radius:50%;background:var(--green-l);color:var(--green-d);font-weight:800;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+  .qr-contact{margin-top:10px;font-size:13.5px;color:var(--green-d);font-weight:700;text-align:left}
+  .qr-row{display:flex;align-items:center;gap:13px;text-align:left;margin-bottom:12px}
+  .qr-thumb{flex:0 0 auto;width:80px;height:80px;object-fit:contain;border:1px solid var(--line);border-radius:10px;background:#fff;padding:5px;cursor:pointer}
+  .qr-info{flex:1;min-width:0}
+  .qr-info .qr-meta{margin:0;font-size:13px;line-height:1.5}
+  .qr-show,.tl-qr-btn{display:block;width:100%;background:var(--green);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:15px;padding:12px;border-radius:11px;cursor:pointer}
+  .qr-show:active,.tl-qr-btn:active{background:var(--green-d)}
+  .tl-qr-btn{margin-top:11px}
+  .qr-more{margin-top:11px;text-align:left}
+  .qr-more summary{cursor:pointer;font-weight:800;font-size:13.5px;color:var(--green-d);padding:4px 0}
+  .qr-more .qr-steps{margin-top:6px}
+  /* QR fullscreen modal */
+  .qrm{position:fixed;inset:0;z-index:210;background:rgba(0,28,27,.93);display:flex;align-items:center;justify-content:center;padding:18px}
+  .qrm[hidden]{display:none}
+  .qrm-box{position:relative;width:100%;max-width:440px;background:#fff;border-radius:20px;padding:22px 18px 20px;text-align:center;box-shadow:0 18px 50px rgba(0,0,0,.45);max-height:94vh;overflow:auto}
+  .qrm-close{position:absolute;top:8px;right:10px;background:transparent;border:none;font-size:24px;font-weight:800;color:var(--muted);cursor:pointer;line-height:1;padding:6px}
+  .qrm-title{margin:2px 28px 16px;font-size:18px;font-weight:800;color:var(--green-d);line-height:1.3}
+  .qrm-img{display:block;width:100%;max-width:400px;max-height:66vh;height:auto;object-fit:contain;margin:0 auto;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .qrm-hint{margin:14px 0 0;font-size:14px;color:var(--muted);font-weight:600}
+  footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer .ku{color:var(--green-d);font-weight:800}
   #toTop{position:fixed;right:16px;bottom:18px;z-index:60;width:50px;height:50px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:22px;font-weight:800;box-shadow:0 4px 14px rgba(0,60,58,.32);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .2s,transform .2s;cursor:pointer}
@@ -234,6 +265,7 @@
       <a href="#trash">แยกขยะ</a>
       <a href="#remember">หน้าที่</a>
       <a href="#faculty">คณะวันนี้</a>
+      <a href="#qr">QR น้อง</a>
       <a href="#more">ลิงก์</a>
     </nav>
   </div>
@@ -414,6 +446,7 @@
           <div class="times"><span class="tb m">เช้า 11.20–11.45</span><span class="tb a">บ่าย 16.20–16.45</span><span class="dur">25 นาที</span></div>
           <h3>ทำแบบประเมิน + แจกของที่ระลึก</h3>
           <div class="do"><span class="lab">พี่เลี้ยงต้องทำ</span><p>QR Code ขึ้นจอโปรเจคเตอร์ / ส่งให้ในไลน์กลุ่มพี่เลี้ยง ให้น้องสแกนทำแบบประเมิน แล้วจึง <b>แจกของที่ระลึก (กระเป๋า)</b> ให้น้อง</p></div>
+          <button class="tl-qr-btn" type="button" data-qr="qrcode/qr-eval.png" data-src="แบบประเมินความพึงพอใจ.png" data-title="แบบประเมินผลกิจกรรม Proud to be KU86">เปิด QR แบบประเมินเต็มจอ</button>
         </div>
       </div>
 
@@ -511,6 +544,63 @@
     </div>
   </section>
 
+  <!-- ===== 7. QR Code สำหรับน้อง ===== -->
+  <section id="qr">
+    <div class="sec-head"><span class="n">7</span><h2>QR Code สำหรับน้อง</h2></div>
+    <p class="lead" style="margin:-4px 2px 14px">แตะ QR หรือกด "เปิด QR เต็มจอ" เพื่อแสดง QR ใหญ่ ๆ ให้น้องสแกน</p>
+
+    <div class="card qr" data-qr="qrcode/qr-eval.png" data-src="แบบประเมินความพึงพอใจ.png" data-title="แบบประเมินผลกิจกรรม Proud to be KU86">
+      <div class="qr-row">
+        <img class="qr-thumb" src="qrcode/qr-eval.png" alt="QR แบบประเมิน" loading="lazy" onerror="this.onerror=null;this.src='แบบประเมินความพึงพอใจ.png'">
+        <div class="qr-info">
+          <h3>แบบประเมินผลกิจกรรม Proud to be KU86</h3>
+          <p class="qr-meta">สแกนช่วง "ทำแบบประเมิน" (11.20–11.45 / 16.20–16.45) ก่อนรับของที่ระลึก</p>
+        </div>
+      </div>
+      <button class="qr-show" type="button">เปิด QR เต็มจอ</button>
+    </div>
+
+    <div class="card qr" data-qr="qrcode/qr-health.png" data-src="QR%20ตรวจสุขภาพ.png" data-title="ลงทะเบียนตรวจสุขภาพฟรี">
+      <div class="qr-row">
+        <img class="qr-thumb" src="qrcode/qr-health.png" alt="QR ตรวจสุขภาพ" loading="lazy" onerror="this.onerror=null;this.src='QR%20ตรวจสุขภาพ.png'">
+        <div class="qr-info">
+          <h3>ลงทะเบียนตรวจสุขภาพฟรี</h3>
+          <p class="qr-meta">คาราวานตรวจสุขภาพฟรี · 15–17 ก.ค. 2569 · 07.00–12.00 น. · อาคารจักรพันธ์ฯ</p>
+        </div>
+      </div>
+      <button class="qr-show" type="button">เปิด QR เต็มจอ</button>
+      <details class="qr-more">
+        <summary>ขั้นตอน &amp; ติดต่อ</summary>
+        <ol class="qr-steps">
+          <li>ลงทะเบียนจองคิว</li>
+          <li>โหลดแอป "หมอ กทม." เลือก "ลงทะเบียนล่วงหน้าก่อนตรวจสุขภาพ"</li>
+          <li>แสดงบัตรประชาชน รับบริการได้เลย ฟรี!</li>
+        </ol>
+        <p class="qr-contact">กองพัฒนานิสิต มก. · โทร. 02-118-0180</p>
+      </details>
+    </div>
+
+    <div class="card qr" data-qr="qrcode/qr-wellness.png" data-src="QR%20แบบสำรวจสุขภาวะ.jpg" data-title="แบบสำรวจสุขภาวะนิสิต">
+      <div class="qr-row">
+        <img class="qr-thumb" src="qrcode/qr-wellness.png" alt="QR สำรวจสุขภาวะ" loading="lazy" onerror="this.onerror=null;this.src='QR%20แบบสำรวจสุขภาวะ.jpg'">
+        <div class="qr-info">
+          <h3>แบบสำรวจสุขภาวะนิสิต</h3>
+          <p class="qr-meta">ผ่านเว็บ kuhappyplace · Log in ด้วย Nontri Account</p>
+        </div>
+      </div>
+      <button class="qr-show" type="button">เปิด QR เต็มจอ</button>
+      <details class="qr-more">
+        <summary>ขั้นตอน &amp; ติดต่อ</summary>
+        <ol class="qr-steps">
+          <li>เข้า kuhappyplace.sa.ku.ac.th แล้ว Log in ด้วย Nontri Account</li>
+          <li>เลือก "สำรวจสุขภาพใจ"</li>
+          <li>เลือก "แบบสำรวจสุขภาวะนิสิต"</li>
+        </ol>
+        <p class="qr-contact">โทร. 087-934-4994 · FB: KU Happy Place Center</p>
+      </details>
+    </div>
+  </section>
+
   <!-- ===== ลิงก์เพิ่มเติม ===== -->
   <section id="more">
     <div class="sec-head"><span class="n">+</span><h2>ข้อมูลเพิ่มเติม</h2></div>
@@ -544,6 +634,16 @@
     <button class="day-opt" type="button" data-days="15"><b>วันที่ 15 มิ.ย.</b><span>วันจันทร์</span></button>
     <button class="day-opt" type="button" data-days="16"><b>วันที่ 16 มิ.ย.</b><span>วันอังคาร</span></button>
     <button class="day-opt both" type="button" data-days="15,16"><b>ทั้งสองวัน</b><span>15–16 มิ.ย. · เริ่มที่วันใกล้สุด</span></button>
+  </div>
+</div>
+
+<!-- ===== QR fullscreen modal ===== -->
+<div class="qrm" id="qrModal" hidden>
+  <div class="qrm-box">
+    <button class="qrm-close" id="qrmClose" type="button" aria-label="ปิด">✕</button>
+    <h3 class="qrm-title" id="qrmTitle"></h3>
+    <img class="qrm-img" id="qrmImg" src="" alt="QR Code">
+    <p class="qrm-hint">ยื่นจอให้น้องสแกน QR นี้ได้เลย</p>
   </div>
 </div>
 
@@ -645,13 +745,22 @@
   function evDate(d){ return new Date(EVENT_YEAR, EVENT_MONTH, +d); }
   // Preview hook: add ?t=HH:MM to the URL to simulate the current time on your selected day (for testing the live status / red marker).
   function effectiveNow(){
-    var m = location.search.match(/[?&]t=(\d{1,2})[:.](\d{2})/);
-    if(m){
-      var work = getWork() || ["15"];
-      var dd = work.map(Number).sort(function(a,b){return a-b;});
-      var base = evDate(dd[0]);
-      base.setHours(+m[1], +m[2], 0, 0);
-      return base;
+    // Read ?t= robustly — handles "09:30", encoded "09%3A30", "09.30", and "0930".
+    var raw = null;
+    try { if(window.URLSearchParams) raw = new URLSearchParams(location.search).get("t"); } catch(e){}
+    if(raw==null){
+      var q = location.search.match(/[?&]t=([^&]*)/);
+      if(q){ try{ raw = decodeURIComponent(q[1].replace(/\+/g," ")); }catch(e){ raw = q[1]; } }
+    }
+    if(raw){
+      var m = raw.match(/^\s*(\d{1,2})\s*(?::|\.|%3A|%3a)?\s*(\d{2})\s*$/);
+      if(m){
+        var work = getWork() || ["15"];
+        var dd = work.map(Number).sort(function(a,b){return a-b;});
+        var base = evDate(dd[0]);
+        base.setHours(+m[1], +m[2], 0, 0);
+        return base;
+      }
     }
     return new Date();
   }
@@ -795,6 +904,37 @@
 
   initView();
   setInterval(renderLive, 30000);
+})();
+
+/* ===== QR fullscreen modal ===== */
+(function(){
+  "use strict";
+  var modal=document.getElementById("qrModal");
+  if(!modal) return;
+  var mTitle=document.getElementById("qrmTitle");
+  var mImg=document.getElementById("qrmImg");
+  var mClose=document.getElementById("qrmClose");
+  var qrSection=document.getElementById("qr");
+  function openQ(src,title,fallback){
+    if(mTitle) mTitle.textContent = title || "QR Code";
+    if(mImg){
+      mImg.onerror = function(){ mImg.onerror=null; if(fallback && fallback!==src) mImg.src=fallback; };
+      mImg.alt = title || "QR Code";
+      mImg.src = src || fallback || "";
+    }
+    modal.hidden=false;
+  }
+  function closeQ(){ modal.hidden=true; if(mImg){ mImg.onerror=null; mImg.src=""; } }
+  document.addEventListener("click", function(e){
+    var t = e.target.closest(".qr-show, .qr-thumb, .qr-img, .tl-qr-btn");
+    if(!t) return;
+    var holder = t.closest(".card.qr") || t;
+    var poster = holder.getAttribute("data-src");
+    openQ(holder.getAttribute("data-qr") || poster, holder.getAttribute("data-title"), poster);
+  });
+  if(mClose) mClose.addEventListener("click", closeQ);
+  modal.addEventListener("click", function(e){ if(e.target===modal) closeQ(); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !modal.hidden) closeQ(); });
 })();
 </script>
 </body>
