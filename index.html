@@ -203,10 +203,10 @@
   .map-note{margin-top:12px;font-size:13.5px;color:var(--muted);font-weight:600;line-height:1.7;text-align:left}
   .map-note b{color:var(--green-d)}
   .mapd-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:#fff}
-  .mapd{display:block;width:1160px;max-width:none;height:auto}
-  .mapd text{font-family:inherit}
+  .mapd{display:block;width:1240px;max-width:none;height:auto}
+  .mapd text,.mapd-fs text{font-family:inherit}
   .sa{fill:#0f8b80}.sb{fill:#b3c23c}.sc{fill:#7cc35a}.sd{fill:#f4c22f}
-  .sl{font-size:11px;font-weight:700;text-anchor:middle}
+  .sl{font-size:12px;font-weight:800;text-anchor:middle}
   .lw{fill:#ffffff}.ld{fill:#22372f}
   .fhr{fill:#ffffff;stroke:#e23b2e;stroke-width:1.6}
   .fhy{fill:#ffffff;stroke:#e0a100;stroke-width:1.6}
@@ -214,6 +214,14 @@
   .zbox{fill:#0f8b80}.zt{fill:#ffffff;font-size:24px;font-weight:800;text-anchor:middle}
   .door{fill:#f4c22f}.doort{fill:#5a4500;font-size:8.5px;font-weight:800;text-anchor:middle}
   .mlbl{font-weight:800;text-anchor:middle}
+  .mapfs-open{display:block;width:100%;margin-top:10px;background:var(--green);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:15px;padding:12px;border-radius:11px;cursor:pointer}
+  .mapfs-open:active{background:var(--green-d)}
+  .mapfs{position:fixed;inset:0;z-index:220;background:#fff;display:flex;flex-direction:column}
+  .mapfs[hidden]{display:none}
+  .mapfs-bar{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--green);color:#fff;font-weight:800;font-size:14px}
+  .mapfs-close{flex:0 0 auto;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:20px;font-weight:800;width:42px;height:42px;border-radius:10px;cursor:pointer}
+  .mapfs-inner{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:10px;background:#f1f8f7}
+  .mapd-fs{display:block;width:1740px;height:auto}
   .share-btn{width:100%;margin-top:12px;font-family:inherit;text-align:left;cursor:pointer}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
   footer{padding:24px 18px 36px;text-align:center;color:var(--muted);font-size:13px}
@@ -793,6 +801,7 @@
         <text x="1052" y="606" class="mlbl" fill="#c8920a" font-size="10">นิสิตพี่เลี้ยง = จุดสีทอง</text>
       </svg>
       </div>
+      <button class="mapfs-open" id="mapFsOpen" type="button">⤢ ดูแผนผังเต็มจอ (ซูม/เลื่อนได้)</button>
       <div class="map-note"><b>โซน A</b> = ที่นั่งคณะ (แต่ละวัน/รอบต่างกัน · ดูหัวข้อ 6) · <b>ห้องน้ำชาย-หญิง</b> อยู่นอกอาคาร ชั้นเดียวกัน (เปิดประตูออกไป) · <b>จุดรับอาหารว่าง / จุดแยกขยะ</b> อยู่นอกอาคาร (ใต้อาคาร) · <b>ลงชื่อพี่เลี้ยง:</b> ระเบียงฝั่งต้นสน (COVER WAY) · <b>เข้า–ออก:</b> ใช้คนละประตูกัน</div>
     </div>
   </section>
@@ -907,6 +916,12 @@
     <button class="day-opt" type="button" data-days="16"><b>วันที่ 16 มิ.ย.</b><span>วันอังคาร</span></button>
     <button class="day-opt both" type="button" data-days="15,16"><b>ทั้งสองวัน</b><span>15–16 มิ.ย. · เริ่มที่วันใกล้สุด</span></button>
   </div>
+</div>
+
+<!-- ===== Fullscreen seating map ===== -->
+<div class="mapfs" id="mapFs" hidden>
+  <div class="mapfs-bar"><span>แผนผังที่นั่ง · เลื่อน/ซูมดูเลขที่นั่งได้</span><button class="mapfs-close" id="mapFsClose" type="button" aria-label="ปิด">✕</button></div>
+  <div class="mapfs-inner" id="mapFsInner"></div>
 </div>
 
 <!-- ===== QR fullscreen modal ===== -->
@@ -1207,6 +1222,28 @@
   if(mClose) mClose.addEventListener("click", closeQ);
   modal.addEventListener("click", function(e){ if(e.target===modal) closeQ(); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !modal.hidden) closeQ(); });
+})();
+
+/* ===== Fullscreen seating map ===== */
+(function(){
+  "use strict";
+  var openBtn=document.getElementById("mapFsOpen");
+  var fs=document.getElementById("mapFs");
+  var inner=document.getElementById("mapFsInner");
+  var closeBtn=document.getElementById("mapFsClose");
+  var src=document.querySelector(".mapd");
+  if(!openBtn || !fs || !inner || !src) return;
+  function show(){
+    inner.innerHTML="";
+    var c=src.cloneNode(true);
+    c.setAttribute("class","mapd-fs");
+    inner.appendChild(c);
+    fs.hidden=false;
+  }
+  function hide(){ fs.hidden=true; inner.innerHTML=""; }
+  openBtn.addEventListener("click", show);
+  if(closeBtn) closeBtn.addEventListener("click", hide);
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && !fs.hidden) hide(); });
 })();
 
 /* ===== Share button ===== */
