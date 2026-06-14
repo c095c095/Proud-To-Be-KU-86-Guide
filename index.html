@@ -224,12 +224,12 @@
   .mlbl{font-weight:800;text-anchor:middle}
   .mapfs-open{display:block;width:100%;margin-top:10px;background:var(--green);color:#fff;border:none;font-family:inherit;font-weight:800;font-size:15px;padding:12px;border-radius:11px;cursor:pointer}
   .mapfs-open:active{background:var(--green-d)}
-  .mapfs{position:fixed;inset:0;z-index:220;background:#fff;display:flex;flex-direction:column}
+  .mapfs{position:fixed;inset:0;z-index:220;background:#fff;display:flex;flex-direction:column;touch-action:manipulation}
   .mapfs[hidden]{display:none}
   .mapfs-bar{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--green);color:#fff;font-weight:800;font-size:14px}
   .mapfs-close{flex:0 0 auto;background:rgba(255,255,255,.2);border:none;color:#fff;font-size:20px;font-weight:800;width:42px;height:42px;border-radius:10px;cursor:pointer}
-  .mapfs-inner{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:10px;background:#f1f8f7}
-  .mapd-fs{display:block;width:100%;max-width:none;height:auto}
+  .mapfs-inner{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:10px;background:#f1f8f7;touch-action:pan-x pan-y}
+  .mapd-fs{display:block;width:100%;max-width:none;height:auto;touch-action:pan-x pan-y}
   .mapfs-ttl{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .mapfs-ctrls{flex:0 0 auto;display:flex;gap:6px;align-items:center}
   .mapfs-ctrls button{background:rgba(255,255,255,.2);border:none;color:#fff;font-weight:800;font-size:15px;min-width:40px;height:40px;padding:0 10px;border-radius:9px;cursor:pointer;font-family:inherit}
